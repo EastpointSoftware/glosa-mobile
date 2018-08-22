@@ -1,6 +1,6 @@
 # GLOSA Mobile
 
-[![Build status](https://build.appcenter.ms/v0.1/apps/3de43118-98e4-479c-bb50-37d1aca6d47a/branches/master/badge)](https://appcenter.ms)
+* **Android** [![Build status](https://build.appcenter.ms/v0.1/apps/3de43118-98e4-479c-bb50-37d1aca6d47a/branches/master/badge)](https://appcenter.ms)
 
 The Green Light Optimal Speed Advisory (GLOSA) project is lead by West Midlands Combined Authority in partnership with Birmingham City Council, Amey, Integrated Design Techniques Limited (IDT) and SG Transport Innovation International.
 
