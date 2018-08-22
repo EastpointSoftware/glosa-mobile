@@ -1,6 +1,6 @@
-# Project Green Light (GLOSA)
+# GLOSA Mobile
 
-The green light optimal speed advisory (GLOSA) project is lead by West Midlands Combined Authority in partnership with Birmingham City Council, Amey, Integrated Design Techniques Limited (IDT) and SG Transport Innovation International.
+The Green Light Optimal Speed Advisory (GLOSA) project is lead by West Midlands Combined Authority in partnership with Birmingham City Council, Amey, Integrated Design Techniques Limited (IDT) and SG Transport Innovation International.
 
 The app itself is a bespoke Xamarin solution that integrates with road-side systems, providing analysis and predictions about the optimal approach speed to traffic lights.
 
@@ -62,9 +62,9 @@ Please read [CONTRIBUTING.md](https://eastpoint.visualstudio.com/_git/Project%20
 
 ## Authors
 
+* **Jin Khera** - *Initial work* - [Jin Khera](http://www.eastpoint.co.uk/eastpoint-team/)
 * **Alice Lai** - *Initial work* - [Alice Lai](http://www.eastpoint.co.uk/eastpoint-team/)
 * **Oliver Gilmore** - *Initial work* - [Oliver Gilmore](http://www.eastpoint.co.uk/eastpoint-team/)
-* **Jin Khera** - *Initial work* - [Jin Khera](http://www.eastpoint.co.uk/eastpoint-team/)
 
 See also the list of [contributors](http://www.eastpoint.co.uk/eastpoint-team/) who participated in this project.
 
