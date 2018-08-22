@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <!--GLOSA Advisory Enabled-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Enable GLOSA Advisory" />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableGLOSAAdvisory"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch3" />
+            </LinearLayout>
+        <!--Enable Text To Speech-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Enable Text To Speech" />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableTextToSpeech"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch1" />
+            </LinearLayout>
+        <!--The confidence is an integer (percentage) of how confident the likelyTime is. In a fixed
+      time UTC system this could be quite high, say =15 (100%), but with demand dependant stages and/or SCOOT/MOVA, this would be lower-->
+        <!--  
+      <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Timing Confidence Level (0 - 15)"
+                android:textSize="18dp"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/traffic_green"
+                local:MvxBind="Text Confidence"
+                android:layout_marginLeft="4dp" />
+        </LinearLayout>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="15"
+            local:MvxBind="Progress Confidence"
+            android:layout_margin="4dp"/> -->
+        <!--Set Vehicle ID-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:text="Unique Vehicle Id"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/traffic_green"
+                    android:textSize="18dp"
+                    android:hint="123456"
+                    local:MvxBind="Text VehicleId"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:maxLength="30"
+                    android:singleLine="true" />
+            </LinearLayout>
+        <!--Enable Advanced Calculator-->
+        <!--<LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:text="Enable Advanced Calculator" />
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                local:MvxBind="Checked EnableAdvancedCalculator"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/switch2" />
+        </LinearLayout>-->
+        <!--Maximum Distance-->
+        <!--<LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max Invoke distance (300 - 500)m"
+                android:textSize="18dp"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="@color/traffic_green"
+                local:MvxBind="Text MaximumInvokeDistanceDisplay"
+                android:layout_marginLeft="4dp" />
+        </LinearLayout>
+        <SeekBar
+            android:id="@+id/seek_invoke_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="15"
+            local:MvxBind="Progress MaximumInvokeDistance" />-->
+        <!--TESTING-->
+        <!--Enable Test Route (A45)-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Enable Test Route (A45)" />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableTestRoute"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch4" />
+            </LinearLayout>
+        <!--Speed limit-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:text="Speed Limit (MPH)"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/traffic_green"
+                    android:textSize="18dp"
+                    android:hint="40 MPH"
+                    android:enabled="false"
+                    local:MvxBind="Text SpeedLimit" />
+            </LinearLayout>
+        <!--Enable Intersection Mode-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Enable Intersection Mode" />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableIntersectionMode"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch5" />
+            </LinearLayout>
+        <!--Set Intersection ID-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:text="Intersection Id"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/traffic_green"
+                    android:textSize="18dp"
+                    android:hint="123456"
+                    android:enabled="true"
+                    local:MvxBind="Text IntersectionId"
+                    android:maxLength="10"
+                    android:singleLine="true"
+                    android:maxLines="1" />
+            </LinearLayout>
+        <!--Direction of Travel-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Heading Direction North South East West" />
+                <RadioGroup
+                    android:id="@+id/radio_group_direction"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="fill_horizontal">
+                    <RadioButton
+                        android:id="@+id/radio_NS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NS"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true"
+                        android:layout_gravity="top" />
+                    <RadioButton
+                        android:id="@+id/radio_SN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SN"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true" />
+                    <RadioButton
+                        android:id="@+id/radio_EW"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EW"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true"
+                        android:layout_gravity="top" />
+                    <RadioButton
+                        android:id="@+id/radio_WE"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WE"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true" />
+                    <RadioButton
+                        android:id="@+id/radio_ANY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ANY"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true;Checked true" />
+                </RadioGroup>
+            </LinearLayout>
+        <!--Maneuver Direction-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Lane Maneuver " />
+                <RadioGroup
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+                    <RadioButton
+                        android:id="@+id/radio_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Left"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled false"
+                        android:layout_gravity="top" />
+                    <RadioButton
+                        android:id="@+id/radio_ahead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ahead"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true;Checked true" />
+                    <RadioButton
+                        android:id="@+id/radio_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Right"
+                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled false" />
+                </RadioGroup>
+            </LinearLayout>
+        <!--Enable GPS Time-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Sync with SNTP" />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableGPSTime"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch6" />
+            </LinearLayout>
+        <!--Enabled WiFi-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="Enable WiFi " />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableWiFiMode"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch7" />
+            </LinearLayout>
+        <!--WiFi Only-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:text="WiFi Only" />
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="Checked EnableWiFiOnlyMode"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/switch8" />
+            </LinearLayout>
+        <!--WiFi Network-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:text="WiFi Network"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/traffic_green"
+                    android:textSize="18dp"
+                    android:hint="CITS"
+                    android:enabled="true"
+                    local:MvxBind="Text WiFiNetworkName"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:maxLines="1" />
+            </LinearLayout>
+        <!--WiFi Secure Key-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
+                <TextView
+                    android:text="WiFi Secure Key"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/traffic_green"
+                    android:textSize="18dp"
+                    android:hint="12345"
+                    android:enabled="true"
+                    local:MvxBind="Text WiFiNetworkPassword"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:maxLines="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Hatchford Brook-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7609507, 52.4510109,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7611974, 52.4511057,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7614791, 52.4512006,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7620799, 52.4513281,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

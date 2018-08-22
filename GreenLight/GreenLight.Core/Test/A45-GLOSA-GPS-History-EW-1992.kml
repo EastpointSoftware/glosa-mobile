@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Berkeley Road-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8298301, 52.462943,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8303022, 52.463008,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8308225, 52.463044,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8312141, 52.463051,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

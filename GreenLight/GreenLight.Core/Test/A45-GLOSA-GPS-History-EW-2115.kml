@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Wagon Lane-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7912317, 52.454040,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7916770, 52.454177,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7921276, 52.454282,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7925782, 52.454445,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

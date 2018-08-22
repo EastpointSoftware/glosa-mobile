@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Gilberstone Avenue-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7993059, 52.458400,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7995044, 52.458521,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7997511, 52.458642,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8000086, 52.458769,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

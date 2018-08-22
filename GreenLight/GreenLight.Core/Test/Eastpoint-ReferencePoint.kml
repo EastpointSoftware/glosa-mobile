@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>ReferencePoint</name>
+    <Style id="icon-1499-0288D1-labelson-nodesc">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Placemark>
+      <name>1991-Victoria Road-Harvey Goodwin Ave</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.115804,52.215637,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>1994-A1134-Gilbert Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.126316,52.216510,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2130-A1309-Arbury Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.134243,52.220858,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2115-Kings Hedges-Milton Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.145447,52.227415,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2112-Cambridge Science Park Rd-Milton Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.150004,52.231381,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2111-Cowley Rd-Milton Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.150722,52.232770,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2105-Roundabout-Milton Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.150548,52.236805,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2110-Butt Ln-Ely Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.152907,52.245327,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>108-Denny End Road-Ely Road</name>
+      <styleUrl>#icon-1499-0288D1-labelson-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          0.178041,52.271292,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Kings's Road-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8333426, 52.463200,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8336269, 52.463226,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8340560, 52.463236,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8343994, 52.463236,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

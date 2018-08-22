@@ -1,0 +1,7 @@
+﻿# Comments are lines which start with '#'
+# Blank lines are ignored.
+# https://stackoverflow.com/questions/26760798/xamarin-android-turn-off-mono-logs
+
+MONO_LOG_LEVEL=error
+
+MONO_LOG_MASK=gc

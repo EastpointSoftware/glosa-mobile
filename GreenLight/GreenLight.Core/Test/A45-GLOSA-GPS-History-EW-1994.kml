@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>SHolder Road-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7796457, 52.451557,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7801178, 52.451577,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7805952, 52.451599,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7812067, 52.451662,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

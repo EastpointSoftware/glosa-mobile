@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+<!--Traffic Light-->
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_weight="0.3">
+    <!--Red-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/transparent"
+                android:background="@drawable/redCircle" />
+        </LinearLayout>
+    <!--Amber-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/transparent"
+                android:background="@drawable/amberCircle" />
+        </LinearLayout>
+    <!--Green-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/transparent"
+                android:background="@drawable/greenCircle" />
+        </LinearLayout>
+    </LinearLayout>
+<!--Messages-->
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_weight="0.7">
+    <!--Movement States Messages-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:textAllCaps="true"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                local:MvxBind="Text GLOSAMessage"
+                android:layout_weight="0.5" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="0.3">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textSize="35sp"
+                    android:textColor="@color/traffic_green"
+                    local:MvxBind="Text SignalCountDownTime"
+                    android:text="-"
+                    android:layout_weight="0.4" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    local:MvxBind="Text NetworkStatus"
+                    android:text="-"
+                    android:layout_weight="0.4" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    local:MvxBind="Text NetworkType"
+                    android:text="-"
+                    android:layout_weight="0.2" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/black" />
+        </LinearLayout>
+    <!--Advisory Messages.-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+        <!--Advisory Speed Message-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:text="-"
+                local:MvxBind="Text AdvisorySpeedMessage"
+                android:layout_weight="0.6" />
+        <!--Priority signal request/ Current speed-->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Priority Signal Request"
+                    local:MvxBind="Click CallPrioritySignalRequestCommand"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />
+            <!--<Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Complete"
+                    local:MvxBind="Click CallCompleteIntersectionCommand"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" />-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:text="Speed --"
+                    local:MvxBind="Text CurrentSpeed"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+        <!--Intersection-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                local:MvxBind="Text Intersection"
+                android:layout_weight="0.2" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

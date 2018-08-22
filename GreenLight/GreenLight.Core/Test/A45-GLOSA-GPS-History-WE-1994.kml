@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Holder Road-WE</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8257778, 52.462743,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8255525, 52.462730,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8253594, 52.462712,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.8251529, 52.462699,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
