@@ -1,5 +1,7 @@
 ﻿#!/usr/bin/env bash
 
+echo "Started pre-build script"
+
 if [ ! -n "$AZURE_MOBILE_SERVICE_CLIENT_URI" ]
 then
     echo "You need define the API_URL variable in App Center"
