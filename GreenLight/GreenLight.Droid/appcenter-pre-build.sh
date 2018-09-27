@@ -12,7 +12,7 @@ echo "Running pre-build script - Get Source directory"
 
 echo "$APPCENTER_SOURCE_DIRECTORY"
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GreenLight.Core/Constants.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GreenLight/GreenLight.Core/Constants.cs
 
 echo "Running pre-build script - Found Source directory!"
 
