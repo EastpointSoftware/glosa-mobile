@@ -2,7 +2,11 @@
 then
     echo "You need define the API_URL variable in App Center"
     exit
+else
+	echo "**pre-build $AZURE_MOBILE_SERVICE_CLIENT_URI"
 fi
+
+echo "$APPCENTER_SOURCE_DIRECTORY"
 
 APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GreenLight.Core/Constants.cs
 
