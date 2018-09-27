@@ -147,7 +147,7 @@ namespace GreenLight.Core.Services
             _mapRequestActive = true;
             var before = DateTime.Now;
             var requestMethod = "GET";
-            var URL = Constants.MapEndpointURL + intersectionId;
+            var URL = Constants.API_GLOSA_MAP_ENDPPOINT_URL + intersectionId;
             int statusCode = 0;
             string value = null;
             try
@@ -155,7 +155,7 @@ namespace GreenLight.Core.Services
                 var map = MAPDataStore.ContainsKey(intersectionId) ? MAPDataStore[intersectionId] : null;
                 if (map == null)
                 {
-                    Envelope envelope = await GLOSACommunicateAsync<Envelope>(intersectionId, Constants.MapEndpointURL);
+                    Envelope envelope = await GLOSACommunicateAsync<Envelope>(intersectionId, Constants.API_GLOSA_MAP_ENDPPOINT_URL);
                     MapData data = envelope.Body.MapData;
                     statusCode = 200;
                     if (data != null)
@@ -230,12 +230,12 @@ namespace GreenLight.Core.Services
 
             _spatRequestActive = true;
             var requestMethod = "GET";
-            var URL = Constants.SpatEndpointURL + intersectionId;
+            var URL = Constants.API_GLOSA_SPAT_ENDPPOINT_URL + intersectionId;
             int statusCode = 0;
             string value = null;
             try
             {
-                Envelope envelope = await GLOSACommunicateAsync<Envelope>(intersectionId, Constants.SpatEndpointURL);
+                Envelope envelope = await GLOSACommunicateAsync<Envelope>(intersectionId, Constants.API_GLOSA_SPAT_ENDPPOINT_URL);
                 SPAT data = envelope.Body.SPAT;
                 if (data != null)
                 {

@@ -44,7 +44,7 @@ namespace GreenLight.Core.Services
         {
             try
             {
-                MobileService = new MobileServiceClient(Constants.GLOSAAzureMobileServiceClientUri);
+                MobileService = new MobileServiceClient(Constants.AZURE_MOBILE_SERVICE_CLIENT_URI);
             }
             catch (Exception ex)
             {

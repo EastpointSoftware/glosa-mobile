@@ -42,12 +42,12 @@ namespace GreenLight.Droid.PlatformDependencies
 
             if (_wifiManager != null)
             {
+                // Make sure system doesn't save power by disabling WiFi
+                _wifiManager.CreateWifiLock(Android.Net.WifiMode.Full, "myLockId");
+
                 // this is a work around for Android devices that are by default prevented from receiving broadcast messages
                 WifiManager.MulticastLock loc = _wifiManager.CreateMulticastLock("Log_Tag");
                 loc.Acquire();
-
-                // Make sure system doesn't save power by disabling WiFi
-                _wifiManager.CreateWifiLock(Android.Net.WifiMode.Full, "myLockId");
             }
 
             _tryingToConnect = false;
@@ -174,6 +174,7 @@ namespace GreenLight.Droid.PlatformDependencies
 
                 if (_wifiManager != null)
                 {
+                   
                     // if already connected then no need to connect
                     if (_wifiManager.ConnectionInfo != null && _wifiManager.ConnectionInfo.SSID == SSID)
                     {

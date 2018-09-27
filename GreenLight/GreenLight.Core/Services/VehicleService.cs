@@ -33,6 +33,14 @@ using GreenLight.Core.Models;
 using GreenLight.Core.Helpers;
 using static GreenLight.Core.Helpers.NodeFinder;
 
+public enum DataConnection
+{
+    Cellular    = 0,
+    WiFi_Beacon = 1,
+    Both        = 2,
+    None        = 3
+}
+
 namespace GreenLight.Core.Services
 {
     public class VehicleService : IVehicleService, IDisposable
@@ -80,7 +88,7 @@ namespace GreenLight.Core.Services
             Debug.WriteLine("Starting Vehicle Service");
 
             _advisoryCalculatorMode = advisoryCalculatorMode;
-            _loggingEnabled = false;
+            _loggingEnabled = true;
             _allowedVehicleManeuvers = allowedVehicleManeuvers;
 
             _navigationService.Start(route, intersectionId, allowedVehicleManeuvers, simulatedDirection, simulatedGPSLocations);
@@ -166,12 +174,14 @@ namespace GreenLight.Core.Services
                         {
                             MapData map = null;
                             SPAT spat = null;
+                            var dataConnection = DataConnection.Cellular;
 
                             if (Settings.EnableWiFiMode == true && HasMapSPATDataFromWiFi() == true)
                             {
                                 _isUsingWiFiSPATData = true;
                                 map = GetWiFIMAP();
                                 spat = GetWiFISPAT();
+                                dataConnection = DataConnection.WiFi_Beacon;
                             }
 
                             // revert to celluar data
@@ -179,6 +189,7 @@ namespace GreenLight.Core.Services
                             {
                                 _isUsingWiFiSPATData = false;
                                 spat = _GLOSAWebService.SPATData(_navigationService.WayPointId);
+                                dataConnection = DataConnection.Cellular;
                             }
 
                             // revert to celluar data
@@ -201,7 +212,7 @@ namespace GreenLight.Core.Services
 
                                 var after = DateTime.Now;
                                 double latency = (after - before).TotalMilliseconds;
-                                LogDataEvent(calculation, glosaResult, latency, currentTimeCROCS);
+                                LogDataEvent(calculation, glosaResult, latency, currentTimeCROCS, dataConnection);
                             }
                             else
                             {
@@ -463,7 +474,7 @@ namespace GreenLight.Core.Services
 
         #region Logging
 
-        private void LogDataEvent(CalculationResult calculationResult, GLOSAResult glosaResult, double latency, double currentTimeCROCS)
+        private void LogDataEvent(CalculationResult calculationResult, GLOSAResult glosaResult, double latency, double currentTimeCROCS, DataConnection dataConnection)
         {
             // Log event to server
             var lane = (MapDataIntersectionsIntersectionGeometryGenericLane)glosaResult.Object;
@@ -478,15 +489,11 @@ namespace GreenLight.Core.Services
                 return;
             }
 
-            LogDataEvent(null, null, advisoryValue, null, detailedMessage, latency, Convert.ToInt16(_navigationService.DeviceHeading), glosaResult.Description);
+            LogDataEvent(null, null, advisoryValue, null, detailedMessage, latency, Convert.ToInt16(_navigationService.DeviceHeading), glosaResult.Description, dataConnection);
         }
 
-        private void LogDataEvent(string eventName = null, string value = null, string advisory = null, string map = null, string spat = null, double latency = -1, int heading = -1, string lane = null)
+        private void LogDataEvent(string eventName = null, string value = null, string advisory = null, string map = null, string spat = null, double latency = -1, int heading = -1, string lane = null, DataConnection dataConnection = DataConnection.None)
         {
-            //var history = _locationService.GPSHistoryValues(20, _intersectionMode, _routeDirection);
-
-            //var json = JsonConvert.SerializeObject(history);
-
             if (_loggingEnabled == false)
             {
                 return;
@@ -499,7 +506,6 @@ namespace GreenLight.Core.Services
                 VehicleId = Settings.UniqueVehicleDeviceAppId,
                 DeviceTime = DateTime.UtcNow,
                 IntersectionId = _navigationService.WayPointId,
-                //GPSHistory = json,
                 Distance = _navigationService.DistanceToWaypoint,
                 RouteId = _navigationService.RouteId,
                 RouteSession = _navigationService.RouteSession,
@@ -514,6 +520,7 @@ namespace GreenLight.Core.Services
                 MAP = map,
                 Lane = lane,
                 Heading = heading,
+                DataConnection = (int)dataConnection,
             };
 
             Logger.LogEvent(_GLOSAAnalyticsService, eventLog);
