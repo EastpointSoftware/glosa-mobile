@@ -49,5 +49,7 @@ namespace GreenLight.Core.Models
         public int Heading { get; set; }
         public string MAP { get; set; }
         public string Lane { get; set; }
+        public int DataConnection { get; set; }
+        public string DataStatus { get; set; }
     }
 }

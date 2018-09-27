@@ -54,13 +54,6 @@ namespace GreenLight.Core
         public static double JUNCTION_COMPLETED_SEARCH_RADIUS = 35; // in meters
         public static double MeterToKiloMeterConstant = 0.001;
 
-        // Data Analytics
-        public static string GLOSAAzureMobileServiceClientUri = "[URI]";
-
-        public static string MapEndpointURL = "[MAP URL]";
-        public static string SpatEndpointURL = "[SPAT URL]";
-        public static string CamEndpointURL = "[CAM URL]";
-
         // TEST Values
         public static string TEST_INTERSECTION_ID = "2111";
 
@@ -81,7 +74,14 @@ namespace GreenLight.Core
         public const int SETTINGS_ROUTE_DIRECTION_EW = 3;
         public const int SETTINGS_ROUTE_DIRECTION_WE = 4;
 
-        public static string AZURE_APP_CENTER_IOS_KEY = "9ddd396b-c160-441f-8e45-ebfa26d68cef";
-        public static string AZURE_APP_CENTER_ANDROID_KEY = "b6dee3dd-bbff-4f79-9dd0-e00cea9964a1";
+        // Data Analytics
+        public static string AZURE_MOBILE_SERVICE_CLIENT_URI = "[]";
+        // GLOSA Web Service
+        public static string API_GLOSA_MAP_ENDPPOINT_URL = "[]";
+        public static string API_GLOSA_SPAT_ENDPPOINT_URL = "[]";
+        public static string API_GLOSA_CAM_ENDPPOINT_URL = "[]";
+
+        public static string AZURE_APP_CENTER_IOS_KEY = "[]";
+        public static string AZURE_APP_CENTER_ANDROID_KEY = "[]";
     }
 }
