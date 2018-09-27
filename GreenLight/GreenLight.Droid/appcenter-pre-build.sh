@@ -1,4 +1,6 @@
-﻿if [ ! -n "$AZURE_MOBILE_SERVICE_CLIENT_URI" ]
+﻿#!/usr/bin/env bash
+
+if [ ! -n "$AZURE_MOBILE_SERVICE_CLIENT_URI" ]
 then
     echo "You need define the API_URL variable in App Center"
     exit
