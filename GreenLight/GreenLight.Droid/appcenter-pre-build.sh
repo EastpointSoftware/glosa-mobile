@@ -14,7 +14,7 @@ echo "$APPCENTER_SOURCE_DIRECTORY"
 
 APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GreenLight/GreenLight.Core/Constants.cs
 
-echo "Running pre-build script - Found Source directory!"
+echo "Running pre-build script - Found Source directory! $APPCENTER_SOURCE_DIRECTORY"
 
 if [ -e "$APP_CONSTANT_FILE" ]
 then
