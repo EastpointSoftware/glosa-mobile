@@ -75,13 +75,13 @@ namespace GreenLight.Core
         public const int SETTINGS_ROUTE_DIRECTION_WE = 4;
 
         // Data Analytics
-        public static string AZURE_MOBILE_SERVICE_CLIENT_URI = "AZURE_MOBILE_SERVICE_CLIENT_URI";
+        public static string AZURE_MOBILE_SERVICE_CLIENT_URI = "AZURE_MOBILE_SERVICE_CLIENT_URI_SECRET";
         // GLOSA Web Service
-        public static string API_GLOSA_MAP_ENDPPOINT_URL = "API_GLOSA_MAP_ENDPPOINT_URL";
-        public static string API_GLOSA_SPAT_ENDPPOINT_URL = "API_GLOSA_SPAT_ENDPPOINT_URL";
-        public static string API_GLOSA_CAM_ENDPPOINT_URL = "API_GLOSA_CAM_ENDPPOINT_URL";
+        public static string API_GLOSA_MAP_ENDPPOINT_URL = "API_GLOSA_MAP_ENDPPOINT_URL_URI_SECRET";
+        public static string API_GLOSA_SPAT_ENDPPOINT_URL = "API_GLOSA_SPAT_ENDPPOINT_URL_URI_SECRET";
+        public static string API_GLOSA_CAM_ENDPPOINT_URL = "API_GLOSA_CAM_ENDPPOINT_UR_URI_SECRETL";
 
-        public static string AZURE_APP_CENTER_IOS_KEY = "AZURE_APP_CENTER_IOS_KEY";
-        public static string AZURE_APP_CENTER_ANDROID_KEY = "AZURE_APP_CENTER_ANDROID_KEY";
+        public static string AZURE_APP_CENTER_IOS_KEY = "AZURE_APP_CENTER_IOS_KEY_URI_SECRET";
+        public static string AZURE_APP_CENTER_ANDROID_KEY = "AZURE_APP_CENTER_ANDROID_KEY_URI_SECRET";
     }
 }
