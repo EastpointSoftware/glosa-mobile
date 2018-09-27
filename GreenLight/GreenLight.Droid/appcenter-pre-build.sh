@@ -6,11 +6,13 @@ if [ ! -n "$AZURE_MOBILE_SERVICE_CLIENT_URI" ]
 then
     echo "You need define the API_URL variable in App Center"
     exit
-else
-	echo "**pre-build $AZURE_MOBILE_SERVICE_CLIENT_URI"
 fi
 
+echo "Running pre-build script - Get Source directory"
+
 echo "$APPCENTER_SOURCE_DIRECTORY"
+
+echo "Running pre-build script - Found Source directory"
 
 APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GreenLight.Core/Constants.cs
 
