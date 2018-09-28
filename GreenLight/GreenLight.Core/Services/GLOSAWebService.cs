@@ -116,7 +116,7 @@ namespace GreenLight.Core.Services
         {
             T data;
 
-            var url = endpoint + id;
+            var url = $"{endpoint}&param={id}";
             HttpResponseMessage message = await GetClient().GetAsync(url);
 
             if (message.IsSuccessStatusCode == true)
@@ -147,7 +147,7 @@ namespace GreenLight.Core.Services
             _mapRequestActive = true;
             var before = DateTime.Now;
             var requestMethod = "GET";
-            var URL = Constants.API_GLOSA_MAP_ENDPPOINT_URL + intersectionId;
+            var URL = $"{Constants.API_GLOSA_MAP_ENDPPOINT_URL}&param={intersectionId}";
             int statusCode = 0;
             string value = null;
             try
@@ -230,7 +230,7 @@ namespace GreenLight.Core.Services
 
             _spatRequestActive = true;
             var requestMethod = "GET";
-            var URL = Constants.API_GLOSA_SPAT_ENDPPOINT_URL + intersectionId;
+            var URL = $"{Constants.API_GLOSA_SPAT_ENDPPOINT_URL}&param={intersectionId}";
             int statusCode = 0;
             string value = null;
             try
