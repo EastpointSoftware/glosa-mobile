@@ -53,9 +53,8 @@ namespace GreenLight.Core
 
             Mvx.RegisterType<IVehicleService, VehicleService>();
 
-            RegisterAppStart<FirstViewModel>();
+            RegisterAppStart<SpeedAdvisoryViewModel>();
         }
         #endregion
-
     }
 }

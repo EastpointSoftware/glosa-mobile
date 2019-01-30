@@ -24,7 +24,14 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 
+using Microsoft.AppCenter;
 using Plugin.CurrentActivity;
+
+using GreenLight.Core;
+using Android.Views;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
 
 namespace GreenLight.Droid
 {
@@ -40,6 +47,12 @@ namespace GreenLight.Droid
         public override void OnCreate()
         {
             base.OnCreate();
+
+            //A great place to initialize Xamarin.Insights and Dependency Services!
+            AppCenter.Start(Constants.AZURE_APP_CENTER_ANDROID_KEY, typeof(Analytics), typeof(Crashes), typeof(Distribute));
+
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
             RegisterActivityLifecycleCallbacks(this);
         }
 
@@ -51,6 +64,7 @@ namespace GreenLight.Droid
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
+            activity.Window.SetFlags(WindowManagerFlags.KeepScreenOn, Android.Views.WindowManagerFlags.KeepScreenOn);
             CrossCurrentActivity.Current.Activity = activity;
         }
 

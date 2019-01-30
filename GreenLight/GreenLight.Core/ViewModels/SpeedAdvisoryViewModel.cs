@@ -37,6 +37,7 @@ using GreenLight.Core.Services;
 using static GreenLight.Core.Helpers.AdvancedAdvisorySpeedCalculator;
 using static GreenLight.Core.Helpers.NodeFinder;
 
+
 namespace GreenLight.Core.ViewModels
 {
 	/// <summary>
@@ -45,12 +46,12 @@ namespace GreenLight.Core.ViewModels
 	/// <seealso cref="MvvmCross.Core.ViewModels.MvxViewModel" />
 	public class SpeedAdvisoryViewModel : MvxViewModel, IDisposable
 	{
-		#region Construction
+        #region Construction
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="SpeedAdvisoryViewModel"/> class.
-		/// </summary>
-		public SpeedAdvisoryViewModel(IMvxMessenger messenger, IMvxLocationWatcher watcher)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpeedAdvisoryViewModel"/> class.
+        /// </summary>
+        public SpeedAdvisoryViewModel(IMvxMessenger messenger, IMvxLocationWatcher watcher)
 		{
             _vehicleService = Mvx.Resolve<IVehicleService>();
             _textToSpeechService = new TextToSpeechService();

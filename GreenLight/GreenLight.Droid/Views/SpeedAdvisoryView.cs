@@ -17,17 +17,25 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
  */
+using System;
 
-using Android.App;
 using Android.Content;
+using Android;
+using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Gms.Common;
+using Android.Support.Design.Widget;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
+using Android.Views;
 using Android.Widget;
 
 using MvvmCross.Droid.Views;
 
 using GreenLight.Core.ViewModels;
-using System;
+using MvvmCross.Platform;
+using GreenLight.Core.Contracts;
 
 namespace GreenLight.Droid.Views
 {
@@ -63,6 +71,7 @@ namespace GreenLight.Droid.Views
         protected override void OnResume()
         {
             base.OnResume();
+            RequestLocationPermissions();
             //RegisterReceiver(_broadcastReceiver, new IntentFilter("uk.co.eastpoint.GeofenceBroadcast"));
             // Code omitted for clarity
         }
@@ -77,6 +86,58 @@ namespace GreenLight.Droid.Views
         protected override void OnDestroy()
         {
             base.OnDestroy();
+        }
+
+        readonly string[] PermissionsLocation =
+        {
+          Manifest.Permission.AccessCoarseLocation,
+          Manifest.Permission.AccessFineLocation
+        };
+
+        const int RequestLocationId = 0;
+
+        void RequestLocationPermissions()
+        {
+            const string permission = Manifest.Permission.AccessFineLocation;
+            if (ContextCompat.CheckSelfPermission(this, permission) == (int)Permission.Granted)
+            {
+                Mvx.Resolve<ILocationService>().Start();
+                return;
+            }
+
+            if (ActivityCompat.ShouldShowRequestPermissionRationale(this, permission))
+            {
+                var layout = FindViewById<LinearLayout>(Resource.Layout.FirstView);
+                //Explain to the user why we need to read the contacts
+                Snackbar.Make(layout, "Location access is required to use the GLOSA App.", Snackbar.LengthIndefinite)
+                        .SetAction("OK", v => ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId))
+                        .Show();
+
+                return;
+            }
+
+            ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            switch (requestCode)
+            {
+                case RequestLocationId:
+                    {
+                        if (grantResults.Length > 0 && grantResults[0] == Permission.Granted)
+                        {
+                            Mvx.Resolve<ILocationService>().Start();
+                            //Permission granted
+                        }
+                        else
+                        {
+                            //Permission Denied :(
+                            //Disabling location functionality
+                        }
+                    }
+                    break;
+            }
         }
 
         #region Implementation
