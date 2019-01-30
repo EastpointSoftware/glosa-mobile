@@ -172,12 +172,12 @@ namespace GreenLight.Core.ViewModels
 
         #region Command
 
-        public IMvxCommand CallCompleteIntersectionCommand => _completeIntersectionCommand ??
-            (_completeIntersectionCommand = new MvxCommand(CompleteIntersectionCommand));
+        public IMvxCommand CallShowSettingsCommand => _showSettingsCommand ??
+            (_showSettingsCommand = new MvxCommand(ShowSettings));
 
-        private void CompleteIntersectionCommand()
+        private void ShowSettings()
         {
-            
+            ShowViewModel<SettingsViewModel>();
         }
         #endregion
 
@@ -514,7 +514,7 @@ namespace GreenLight.Core.ViewModels
         private string _networkStatus;
         private string _networkType;
         private StateTimeMovementEvent _currentSignaState;
-        private IMvxCommand _completeIntersectionCommand;
+        private IMvxCommand _showSettingsCommand;
         private CancellationTokenSource _cancellationTokenSource;
 
         #endregion
