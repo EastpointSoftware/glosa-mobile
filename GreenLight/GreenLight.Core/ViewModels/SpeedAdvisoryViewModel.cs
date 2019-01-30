@@ -37,6 +37,7 @@ using GreenLight.Core.Services;
 using static GreenLight.Core.Helpers.AdvancedAdvisorySpeedCalculator;
 using static GreenLight.Core.Helpers.NodeFinder;
 
+
 namespace GreenLight.Core.ViewModels
 {
 	/// <summary>
@@ -45,12 +46,12 @@ namespace GreenLight.Core.ViewModels
 	/// <seealso cref="MvvmCross.Core.ViewModels.MvxViewModel" />
 	public class SpeedAdvisoryViewModel : MvxViewModel, IDisposable
 	{
-		#region Construction
+        #region Construction
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="SpeedAdvisoryViewModel"/> class.
-		/// </summary>
-		public SpeedAdvisoryViewModel(IMvxMessenger messenger, IMvxLocationWatcher watcher)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpeedAdvisoryViewModel"/> class.
+        /// </summary>
+        public SpeedAdvisoryViewModel(IMvxMessenger messenger, IMvxLocationWatcher watcher)
 		{
             _vehicleService = Mvx.Resolve<IVehicleService>();
             _textToSpeechService = new TextToSpeechService();
@@ -72,37 +73,30 @@ namespace GreenLight.Core.ViewModels
 
             _vehicleService.VehicleEventHandler += VehicleServiceEventHandler;
 
-            if (Settings.EnableIntersectionMode == false && Settings.EnableTestRoute == false)
+            // Here we are forcing to use the Advanced Calculator
+            AdvisoryCalculatorMode advisoryCalculatorMode = AdvisoryCalculatorMode.Basic;
+            Settings.EnableAdvancedCalculator = true;
+            if (Settings.EnableAdvancedCalculator == true)
             {
-                Debug.WriteLine("Failed To Start Vehicle Service");
-                GLOSAMessage = "Unsupported mode. Enable a test mode via settings";
+                advisoryCalculatorMode = AdvisoryCalculatorMode.Advanced;
+            }
+
+            if (Settings.EnableIntersectionMode == true)
+            {
+                try
+                {
+                    List<GPSLocation> simulatedGPSHistory = KMLHelper.GLOSATestRouteIntersectionHistory(Settings.IntersectionId, Settings.RouteDirectionOption);
+                    _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), Settings.IntersectionId, Settings.VehicleManeuverDirection, Settings.RouteDirectionOption, simulatedGPSHistory, advisoryCalculatorMode);
+                }
+                catch (Exception e)
+                {
+                    GLOSAMessage = $"Intersection Id not recognised ({Settings.IntersectionId}) or Direction not valid)";
+                }
+
             }
             else
             {
-                // Here we are forcing to use the Advanced Calculator
-                AdvisoryCalculatorMode advisoryCalculatorMode = AdvisoryCalculatorMode.Basic;
-                Settings.EnableAdvancedCalculator = true;
-                if (Settings.EnableAdvancedCalculator == true)
-                {
-                    advisoryCalculatorMode = AdvisoryCalculatorMode.Advanced;
-                }
-
-                if (Settings.EnableTestRoute == true)
-                {
-                    _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), "GLOSA A45", Settings.VehicleManeuverDirection, WaypointDetectionMethod.GPSHistoryDirection, advisoryCalculatorMode);
-                }
-                else if (Settings.EnableIntersectionMode == true)
-                {
-                    try
-                    {
-                        List<GPSLocation> simulatedGPSHistory = KMLHelper.GLOSATestRouteIntersectionHistory(Settings.IntersectionId, Settings.RouteDirectionOption);
-                        _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), Settings.IntersectionId, Settings.VehicleManeuverDirection, Settings.RouteDirectionOption, simulatedGPSHistory, advisoryCalculatorMode);
-                    }
-                    catch (Exception e)
-                    {
-                        GLOSAMessage = $"Intersection Id not recognised ({Settings.IntersectionId}) or Direction not valid)";
-                    }
-                }
+                _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), "GLOSA", Settings.VehicleManeuverDirection, WaypointDetectionMethod.GPSHistoryDirection, advisoryCalculatorMode);
             }
         }
 
@@ -178,12 +172,12 @@ namespace GreenLight.Core.ViewModels
 
         #region Command
 
-        public IMvxCommand CallCompleteIntersectionCommand => _completeIntersectionCommand ??
-            (_completeIntersectionCommand = new MvxCommand(CompleteIntersectionCommand));
+        public IMvxCommand CallShowSettingsCommand => _showSettingsCommand ??
+            (_showSettingsCommand = new MvxCommand(ShowSettings));
 
-        private void CompleteIntersectionCommand()
+        private void ShowSettings()
         {
-            
+            ShowViewModel<SettingsViewModel>();
         }
         #endregion
 
@@ -520,7 +514,7 @@ namespace GreenLight.Core.ViewModels
         private string _networkStatus;
         private string _networkType;
         private StateTimeMovementEvent _currentSignaState;
-        private IMvxCommand _completeIntersectionCommand;
+        private IMvxCommand _showSettingsCommand;
         private CancellationTokenSource _cancellationTokenSource;
 
         #endregion

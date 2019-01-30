@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?><SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:CROCS="CROCS-0-1"><SOAP-ENV:Body><MapData>
+    <msgID>18</msgID>
+    <msgIssueRevision>1</msgIssueRevision>
+    <intersections>
+        <IntersectionGeometry>
+            <id>
+                <id>2124</id>
+            </id>
+            <revision>1</revision>
+            <refPoint  xmlns:ITS-Container="ITS-Container" >
+                <lat>524616359</lat>
+                <long>-18091510</long>
+            </refPoint>
+            <laneSet>
+                <GenericLane>
+                    <laneID>146</laneID>
+                    <laneAttributes>
+                        <directionalUse>01</directionalUse>
+                        <sharedWith>0011110110</sharedWith>
+                        <laneType>
+                            <vehicle>0000000</vehicle>
+                        </laneType>
+                    </laneAttributes>
+                    <nodeList>
+                        <nodes>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18092009</lon>
+                                        <lat>524616185</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18095939</lon>
+                                        <lat>524616471</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18100257</lon>
+                                        <lat>524616577</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18104736</lon>
+                                        <lat>524616593</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                        </nodes>
+                    </nodeList>
+                </GenericLane>
+                <GenericLane>
+                    <laneID>145</laneID>
+                    <laneAttributes>
+                        <directionalUse>01</directionalUse>
+                        <sharedWith>0011110110</sharedWith>
+                        <laneType>
+                            <vehicle>0000000</vehicle>
+                        </laneType>
+                    </laneAttributes>
+                    <nodeList>
+                        <nodes>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18091875</lon>
+                                        <lat>524616536</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18094370</lon>
+                                        <lat>524616724</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18098447</lon>
+                                        <lat>524616862</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18106399</lon>
+                                        <lat>524617002</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                        </nodes>
+                    </nodeList>
+                </GenericLane>
+                <GenericLane>
+                    <laneID>144</laneID>
+                    <laneAttributes>
+                        <directionalUse>10</directionalUse>
+                        <sharedWith>0011110110</sharedWith>
+                        <laneType>
+                            <vehicle>0000000</vehicle>
+                        </laneType>
+                    </laneAttributes>
+                    <nodeList>
+                        <nodes>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18036142</lon>
+                                        <lat>524606828</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18037831</lon>
+                                        <lat>524607539</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18039729</lon>
+                                        <lat>524608234</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18042653</lon>
+                                        <lat>524609173</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18045912</lon>
+                                        <lat>524609966</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18050807</lon>
+                                        <lat>524610873</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18059289</lon>
+                                        <lat>524612037</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18070460</lon>
+                                        <lat>524613590</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18079976</lon>
+                                        <lat>524614926</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18088532</lon>
+                                        <lat>524616135</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18090979</lon>
+                                        <lat>524616388</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                        </nodes>
+                    </nodeList>
+                    <connectsTo>
+                        <Connection>
+                            <connectingLane>
+                                <lane>146</lane>
+                                <maneuver>100000100000</maneuver>
+                            </connectingLane>
+                            <signalGroup>1</signalGroup>
+                        </Connection>
+                        <Connection>
+                            <connectingLane>
+                                <lane>145</lane>
+                                <maneuver>100000100000</maneuver>
+                            </connectingLane>
+                            <signalGroup>1</signalGroup>
+                        </Connection>
+                    </connectsTo>
+                </GenericLane>
+                <GenericLane>
+                    <laneID>143</laneID>
+                    <laneAttributes>
+                        <directionalUse>10</directionalUse>
+                        <sharedWith>0011110110</sharedWith>
+                        <laneType>
+                            <vehicle>0000000</vehicle>
+                        </laneType>
+                    </laneAttributes>
+                    <nodeList>
+                        <nodes>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18036378</lon>
+                                        <lat>524606592</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18039684</lon>
+                                        <lat>524607883</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18042071</lon>
+                                        <lat>524608663</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18045786</lon>
+                                        <lat>524609627</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18050024</lon>
+                                        <lat>524610420</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18081594</lon>
+                                        <lat>524614877</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18089640</lon>
+                                        <lat>524615985</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                            <Node>
+                                <delta>
+                                    <node-LatLon  xmlns:ITS-Container="ITS-Container" >
+                                        <lon>-18091102</lon>
+                                        <lat>524616132</lat>
+                                    </node-LatLon>
+                                </delta>
+                            </Node>
+                        </nodes>
+                    </nodeList>
+                    <connectsTo>
+                        <Connection>
+                            <connectingLane>
+                                <lane>146</lane>
+                                <maneuver>100000100000</maneuver>
+                            </connectingLane>
+                            <signalGroup>1</signalGroup>
+                        </Connection>
+                        <Connection>
+                            <connectingLane>
+                                <lane>145</lane>
+                                <maneuver>100000100000</maneuver>
+                            </connectingLane>
+                            <signalGroup>1</signalGroup>
+                        </Connection>
+                    </connectsTo>
+                </GenericLane>
+            </laneSet>
+        </IntersectionGeometry>
+    </intersections>
+</MapData>
+</SOAP-ENV:Body></SOAP-ENV:Envelope>

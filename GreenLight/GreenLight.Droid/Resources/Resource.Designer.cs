@@ -4250,8 +4250,8 @@ namespace GreenLight.Droid
 			// aapt resource value: 0x7f0c0054
 			public const int list_item = 2131492948;
 			
-			// aapt resource value: 0x7f0c00b9
-			public const int masked = 2131493049;
+			// aapt resource value: 0x7f0c00b2
+			public const int masked = 2131493042;
 			
 			// aapt resource value: 0x7f0c0097
 			public const int media_actions = 2131493015;
@@ -4304,32 +4304,14 @@ namespace GreenLight.Droid
 			// aapt resource value: 0x7f0c0069
 			public const int radio = 2131492969;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int radio_ANY = 2131493041;
-			
-			// aapt resource value: 0x7f0c00af
-			public const int radio_EW = 2131493039;
+			// aapt resource value: 0x7f0c00ac
+			public const int radio_IB = 2131493036;
 			
 			// aapt resource value: 0x7f0c00ad
-			public const int radio_NS = 2131493037;
+			public const int radio_OB = 2131493037;
 			
-			// aapt resource value: 0x7f0c00ae
-			public const int radio_SN = 2131493038;
-			
-			// aapt resource value: 0x7f0c00b0
-			public const int radio_WE = 2131493040;
-			
-			// aapt resource value: 0x7f0c00b3
-			public const int radio_ahead = 2131493043;
-			
-			// aapt resource value: 0x7f0c00ac
-			public const int radio_group_direction = 2131493036;
-			
-			// aapt resource value: 0x7f0c00b2
-			public const int radio_left = 2131493042;
-			
-			// aapt resource value: 0x7f0c00b4
-			public const int radio_right = 2131493044;
+			// aapt resource value: 0x7f0c00ab
+			public const int radio_group_direction = 2131493035;
 			
 			// aapt resource value: 0x7f0c0041
 			public const int right = 2131492929;
@@ -4455,19 +4437,16 @@ namespace GreenLight.Droid
 			public const int switch3 = 2131493032;
 			
 			// aapt resource value: 0x7f0c00aa
-			public const int switch4 = 2131493034;
+			public const int switch5 = 2131493034;
 			
-			// aapt resource value: 0x7f0c00ab
-			public const int switch5 = 2131493035;
+			// aapt resource value: 0x7f0c00ae
+			public const int switch6 = 2131493038;
 			
-			// aapt resource value: 0x7f0c00b5
-			public const int switch6 = 2131493045;
+			// aapt resource value: 0x7f0c00af
+			public const int switch7 = 2131493039;
 			
-			// aapt resource value: 0x7f0c00b6
-			public const int switch7 = 2131493046;
-			
-			// aapt resource value: 0x7f0c00b7
-			public const int switch8 = 2131493047;
+			// aapt resource value: 0x7f0c00b0
+			public const int switch8 = 2131493040;
 			
 			// aapt resource value: 0x7f0c001f
 			public const int tabMode = 2131492895;
@@ -4538,8 +4517,8 @@ namespace GreenLight.Droid
 			// aapt resource value: 0x7f0c000e
 			public const int view_offset_helper = 2131492878;
 			
-			// aapt resource value: 0x7f0c00b8
-			public const int visible = 2131493048;
+			// aapt resource value: 0x7f0c00b1
+			public const int visible = 2131493041;
 			
 			// aapt resource value: 0x7f0c007f
 			public const int webview = 2131492991;

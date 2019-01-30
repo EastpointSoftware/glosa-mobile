@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>ReferencePoint</name>
+    <Placemark>
+      <name>1991-Kings Road</name>
+      <Point>
+        <coordinates>
+          -1.8351252,52.4633414,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>1992-Berkeley Road</name>
+      <Point>
+        <coordinates>
+          -1.8331316,52.4632691,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>1994-Holder Road</name>
+      <Point>
+        <coordinates>
+          -1.8237117,52.4624797,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2130-Gilberstone Avenue</name>
+      <Point>
+        <coordinates>
+          -1.8003711,52.4589677,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2115-Wagon Lane</name>
+      <Point>
+        <coordinates>
+          -1.7938292,52.4549404,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2112-Lyndon Road</name>
+      <Point>
+        <coordinates>
+          -1.7887008,52.4533288,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2111-Sheaf Lane/Hobbs Moat Road</name>
+      <Point>
+        <coordinates>
+          -1.7820114,52.4517972,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2105-Coalway Avenue</name>
+      <Point>
+        <coordinates>
+          -1.7790556,52.4515602,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2110-Hatchford Brook</name>
+      <Point>
+        <coordinates>
+          -1.7636383,52.451552,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Damson Parkway</name>
+      <Point>
+        <coordinates>
+          -1.7531508,52.4471203,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4451-Jarvis</name>
+      <Point>
+        <coordinates>
+          -1.8468803,52.5089607,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4435-Wheelwright Rd O/B</name>
+      <Point>
+        <coordinates>
+          -1.8368361,52.5092812,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4437-Wheelwright Rd I/B</name>
+      <Point>
+        <coordinates>
+          -1.8357046,52.5095543,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4439-Bromford Lane</name>
+      <Point>
+        <coordinates>
+          -1.8340149,52.5110435,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4421-Wood Lane</name>
+      <Point>
+        <coordinates>
+          -1.8282028,52.5131531,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4425-Holly Lane</name>
+      <Point>
+        <coordinates>
+          -1.8211918,52.5159111,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4426-Kingsbury Rd</name>
+      <Point>
+        <coordinates>
+          -1.8196919,52.5167923,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2106-Brays Rd O/B</name>
+      <Point>
+        <coordinates>
+          -1.7971757,52.4577522,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2107-Brays Rd I/B</name>
+      <Point>
+        <coordinates>
+          -1.7975448,52.4576051,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2126-Gilberstone Avenue O/B</name>
+      <Point>
+        <coordinates>
+          -1.8009040,52.4594805,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2127-Gilberstone Avenue I/B</name>
+      <Point>
+        <coordinates>
+          -1.8009134,52.4592387,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2005-Steyning Rd O/B</name>
+      <Point>
+        <coordinates>
+          -1.8033435,52.4607654,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2004-Steyning Rd I/B</name>
+      <Point>
+        <coordinates>
+          -1.8035534,52.4606388,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2125-Yew Tree Lane O/B</name>
+      <Point>
+        <coordinates>
+          -1.8091175,52.4618067,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2124-Clay Lane I/B</name>
+      <Point>
+        <coordinates>
+          -1.8091510,52.4616359,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

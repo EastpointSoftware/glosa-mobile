@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/transparent"
-                android:background="@drawable/redCircle" />
+                android:background="@drawable/redCircle"
+				local:MvxBind="Click CallShowSettingsCommand"/>
         </LinearLayout>
     <!--Amber-->
         <LinearLayout

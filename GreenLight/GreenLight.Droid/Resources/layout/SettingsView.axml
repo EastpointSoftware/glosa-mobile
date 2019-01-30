@@ -149,7 +149,7 @@
             local:MvxBind="Progress MaximumInvokeDistance" />-->
         <!--TESTING-->
         <!--Enable Test Route (A45)-->
-            <LinearLayout
+        <!--<LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                     local:MvxBind="Checked EnableTestRoute"
                     android:layout_gravity="center_vertical"
                     android:id="@+id/switch4" />
-            </LinearLayout>
+            </LinearLayout>-->
         <!--Speed limit-->
             <LinearLayout
                 android:orientation="horizontal"
@@ -231,7 +231,7 @@
                     android:singleLine="true"
                     android:maxLines="1" />
             </LinearLayout>
-        <!--Direction of Travel-->
+        <!--Direction InBound/OutBound-->
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    android:text="Heading Direction North South East West" />
+                    android:text="Direction" />
                 <RadioGroup
                     android:id="@+id/radio_group_direction"
                     android:layout_width="fill_parent"
@@ -250,41 +250,22 @@
                     android:orientation="horizontal"
                     android:layout_gravity="fill_horizontal">
                     <RadioButton
-                        android:id="@+id/radio_NS"
+                        android:id="@+id/radio_IB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NS"
+                        android:text="In Bound"
                         local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true"
                         android:layout_gravity="top" />
                     <RadioButton
-                        android:id="@+id/radio_SN"
+                        android:id="@+id/radio_OB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SN"
+                        android:text="Out Bound"
                         local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true" />
-                    <RadioButton
-                        android:id="@+id/radio_EW"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="EW"
-                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true"
-                        android:layout_gravity="top" />
-                    <RadioButton
-                        android:id="@+id/radio_WE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="WE"
-                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true" />
-                    <RadioButton
-                        android:id="@+id/radio_ANY"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ANY"
-                        local:MvxBind="Click ChangeLaneManeverkCommand;Enabled true;Checked true" />
                 </RadioGroup>
             </LinearLayout>
         <!--Maneuver Direction-->
-            <LinearLayout
+        <!--<LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -320,7 +301,7 @@
                         android:text="Right"
                         local:MvxBind="Click ChangeLaneManeverkCommand;Enabled false" />
                 </RadioGroup>
-            </LinearLayout>
+            </LinearLayout>-->
         <!--Enable GPS Time-->
             <LinearLayout
                 android:orientation="horizontal"

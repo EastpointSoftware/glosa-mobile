@@ -53,14 +53,7 @@ namespace GreenLight.Droid.Views
         {
             base.OnCreate(savedInstanceState);
 
-            //A great place to initialize Xamarin.Insights and Dependency Services!
-            AppCenter.Start(Constants.AZURE_APP_CENTER_ANDROID_KEY, typeof(Analytics), typeof(Crashes), typeof(Distribute));
-
             SetContentView(Resource.Layout.FirstView);
-
-            Window.SetFlags(WindowManagerFlags.KeepScreenOn, Android.Views.WindowManagerFlags.KeepScreenOn);
-
-            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
             this.ViewModel.LocationPermissionGranted = false;
 

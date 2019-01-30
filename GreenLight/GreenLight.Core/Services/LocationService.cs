@@ -29,8 +29,6 @@ using MvvmCross.Plugins.Messenger;
 using GreenLight.Core.Contracts;
 using GreenLight.Core.Helpers;
 
-using static GreenLight.Core.Helpers.NodeFinder;
-
 namespace GreenLight.Core.Services
 {
     /// <summary>
@@ -38,6 +36,16 @@ namespace GreenLight.Core.Services
     /// </summary>
     public class LocationService : ILocationService
     {
+        #region Member Variables
+
+        private readonly IMvxLocationWatcher _watcher;
+        private readonly IMvxMessenger _messenger;
+        private MvxGeoLocation _currentLocation;
+        private bool _permissionGranted;
+        private bool _isEnabled;
+        private bool _isAvailable;
+        #endregion
+
         #region Construction
 
         /// <summary>
@@ -49,30 +57,44 @@ namespace GreenLight.Core.Services
         {
             _messenger = messenger;
 
+            _watcher = watcher;
+        }
+
+        #endregion
+
+        #region Properties
+        public bool IsEnabled { get { return _isEnabled; } }
+
+        public bool IsAvaliable { get { return _isAvailable; } }
+        #endregion
+
+        #region Public
+
+        public void Start()
+        {
             try
             {
-                _watcher = watcher;
-                _watcher.OnPermissionChanged += _permissionChanged;
-                _watcher.Start(new MvxLocationOptions()
+                if (_watcher.Started == false)
                 {
-                    Accuracy = MvxLocationAccuracy.Fine,
-                    TrackingMode = MvxLocationTrackingMode.Foreground,
-                }, _onLocation, _onError);
+                    _watcher.OnPermissionChanged += _permissionChanged;
+                    _watcher.Start(new MvxLocationOptions()
+                    {
+                        Accuracy = MvxLocationAccuracy.Fine,
+                        TrackingMode = MvxLocationTrackingMode.Foreground,
+                    }, _onLocation, _onError);
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
                 throw e;
             }
         }
 
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Public
+        public void Stop()
+        {
+            _watcher.Stop();
+        }
 
         #endregion
 
@@ -80,6 +102,9 @@ namespace GreenLight.Core.Services
 
         private void _onLocation(MvxGeoLocation location)
         {
+            _isEnabled = true;
+            _isAvailable = true;
+
             if (LocationHelper.IsLocationTimestampRecent(location.Timestamp.LocalDateTime) == false)
             {
                 return;
@@ -106,6 +131,38 @@ namespace GreenLight.Core.Services
         private void _onError(MvxLocationError error)
         {
             Mvx.Error("Seen location error {0}", error.Code);
+
+            //ServiceUnavailable = 0,
+            //PermissionDenied = 1,
+            //PositionUnavailable = 2,
+            //Timeout = 3,
+            //Network = 4,
+            //Canceled = 5
+
+            switch (error.Code)
+            {
+                case MvxLocationErrorCode.ServiceUnavailable:
+                    _isEnabled = false;
+                    _isAvailable = false;
+                    _watcher.Stop();
+                    break;
+                case MvxLocationErrorCode.PermissionDenied:
+                    _isEnabled = false;
+                    _isAvailable = false;
+                    _permissionGranted = false;
+                    _watcher.Stop();
+                    break;
+                case MvxLocationErrorCode.PositionUnavailable:
+                    break;
+                case MvxLocationErrorCode.Timeout:
+                    break;
+                case MvxLocationErrorCode.Network:
+                    break;
+                case MvxLocationErrorCode.Canceled:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void _permissionChanged(object sender, MvxValueEventArgs<MvxLocationPermission> e)
@@ -113,14 +170,6 @@ namespace GreenLight.Core.Services
             _permissionGranted = e.Value == MvxLocationPermission.Granted;
         }
        
-        #endregion
-
-        #region Member Variables
-
-        private readonly IMvxLocationWatcher _watcher;
-        private readonly IMvxMessenger _messenger;
-        private MvxGeoLocation _currentLocation;
-        private bool _permissionGranted;
         #endregion
     }
 }
