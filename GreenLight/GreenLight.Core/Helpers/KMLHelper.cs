@@ -148,7 +148,7 @@ namespace GreenLight.Core.Helpers
         {
             var name = DirectionSettingName(directionSettingValue);
 
-            var list = LoadPlacemarksFromFile($"GreenLight.Core.Test.A45-GLOSA-GPS-History-{name}-{intersectionId}.kml").ToList();
+            var list = LoadPlacemarksFromFile($"GreenLight.Core.Test.{intersectionId}-{name}.kml").ToList();
 
             var gpsHistory = ConvertToGPSLocationList(list);
 
@@ -170,10 +170,10 @@ namespace GreenLight.Core.Helpers
                     name = "SN";
                     break;
                 case Constants.SETTINGS_ROUTE_DIRECTION_EW:
-                    name = "EW";
+                    name = "IB";
                     break;
                 case Constants.SETTINGS_ROUTE_DIRECTION_WE:
-                    name = "WE";
+                    name = "OB";
                     break;
                 default:
                     break;

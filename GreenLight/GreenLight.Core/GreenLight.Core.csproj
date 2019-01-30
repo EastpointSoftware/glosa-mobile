@@ -91,10 +91,26 @@
     <EmbeddedResource Include="Test\MAP-2115.xml" />
     <EmbeddedResource Include="Test\MAP-2130.xml" />
     <EmbeddedResource Include="Test\SPAT-2112-WiFi.xml" />
+    <EmbeddedResource Include="Test\MAP-2004.xml" />
+    <EmbeddedResource Include="Test\MAP-2005.xml" />
+    <EmbeddedResource Include="Test\MAP-2106.xml" />
+    <EmbeddedResource Include="Test\MAP-2107.xml" />
+    <EmbeddedResource Include="Test\MAP-2124.xml" />
+    <EmbeddedResource Include="Test\MAP-2125.xml" />
+    <EmbeddedResource Include="Test\MAP-2126.xml" />
+    <EmbeddedResource Include="Test\MAP-2127.xml" />
+    <EmbeddedResource Include="Test\MAP-4421.xml" />
+    <EmbeddedResource Include="Test\MAP-4425.xml" />
+    <EmbeddedResource Include="Test\MAP-4426.xml" />
+    <EmbeddedResource Include="Test\MAP-4435.xml" />
+    <EmbeddedResource Include="Test\MAP-4437.xml" />
+    <EmbeddedResource Include="Test\MAP-4439.xml" />
+    <EmbeddedResource Include="Test\MAP-4451.xml" />
     <Content Include="_Documents\GLOSAEventLogCreateTable.sql" />
     <Content Include="_Documents\GLOSAMonitoringLogCreateTable.sql" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Test\4451-OB.kml" />
     <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -102,8 +118,8 @@
     <EmbeddedResource Include="Test\A45-GLOSA-ReferencePoint.kml" />
     <EmbeddedResource Include="Test\Eastpoint-ReferencePoint.kml" />
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-1991.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2112.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2112.kml" />
+    <EmbeddedResource Include="Test\2112-OB.kml" />
+    <EmbeddedResource Include="Test\2112-IB.kml" />
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-SN-2112.kml" />
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2111.kml" />
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-SN-2111.kml" />
@@ -122,6 +138,8 @@
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2115.kml" />
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2105.kml" />
     <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2105.kml" />
+    <None Include="Test\4435-OB.kml" />
+    <EmbeddedResource Include="Test\4437-IB.kml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
