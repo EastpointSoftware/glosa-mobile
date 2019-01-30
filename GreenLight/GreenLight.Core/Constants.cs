@@ -69,10 +69,8 @@ namespace GreenLight.Core
         public const int SETTINGS_TIMINGS_OPTION_START_END = 2;
 
         public const int SETTINGS_ROUTE_DIRECTION_ANY = 0;
-        public const int SETTINGS_ROUTE_DIRECTION_NS = 1;
-        public const int SETTINGS_ROUTE_DIRECTION_SN = 2;
-        public const int SETTINGS_ROUTE_DIRECTION_EW = 3;
-        public const int SETTINGS_ROUTE_DIRECTION_WE = 4;
+        public const int SETTINGS_ROUTE_DIRECTION_InBound = 1;
+        public const int SETTINGS_ROUTE_DIRECTION_OutBound = 2;
 
         // Data Analytics
         public static string AZURE_MOBILE_SERVICE_CLIENT_URI = "AZURE_MOBILE_SERVICE_CLIENT_URI_SECRET";
