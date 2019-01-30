@@ -45,3 +45,7 @@ e.g
     </Placemark>
   </Document>
 </kml>
+
+Useful links
+https://gridreferencefinder.com/
+http://kmlviewer.nsspot.net/
