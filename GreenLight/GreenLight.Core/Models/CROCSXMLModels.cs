@@ -88,14 +88,14 @@ namespace GreenLight.Core.Models
         public partial class MapData
         {
 
-            private byte msgIDField;
+            private string msgIDField;
 
-            private byte msgIssueRevisionField;
+            private string msgIssueRevisionField;
 
             private MapDataIntersections intersectionsField;
 
             /// <remarks/>
-            public byte msgID
+            public string msgID
             {
                 get
                 {
@@ -108,7 +108,7 @@ namespace GreenLight.Core.Models
             }
 
             /// <remarks/>
-            public byte msgIssueRevision
+            public string msgIssueRevision
             {
                 get
                 {
@@ -166,7 +166,7 @@ namespace GreenLight.Core.Models
 
             private MapDataIntersectionsIntersectionGeometryID idField;
 
-            private byte revisionField;
+            private string revisionField;
 
             private MapDataIntersectionsIntersectionGeometryRefPoint refPointField;
 
@@ -186,7 +186,7 @@ namespace GreenLight.Core.Models
             }
 
             /// <remarks/>
-            public byte revision
+            public string revision
             {
                 get
                 {
@@ -294,7 +294,7 @@ namespace GreenLight.Core.Models
         public partial class MapDataIntersectionsIntersectionGeometryGenericLane
         {
 
-            private byte laneIDField;
+            private int laneIDField;
 
             private MapDataIntersectionsIntersectionGeometryGenericLaneLaneAttributes laneAttributesField;
 
@@ -303,7 +303,7 @@ namespace GreenLight.Core.Models
             private MapDataIntersectionsIntersectionGeometryGenericLaneConnection[] connectsToField;
 
             /// <remarks/>
-            public byte laneID
+            public int laneID
             {
                 get
                 {
@@ -362,15 +362,14 @@ namespace GreenLight.Core.Models
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
         public partial class MapDataIntersectionsIntersectionGeometryGenericLaneLaneAttributes
         {
+            private string directionalUseField;
 
-            private byte directionalUseField;
-
-            private uint sharedWithField;
+            private string sharedWithField;
 
             private MapDataIntersectionsIntersectionGeometryGenericLaneLaneAttributesLaneType laneTypeField;
 
             /// <remarks/>
-            public byte directionalUse
+            public string directionalUse
             {
                 get
                 {
@@ -383,7 +382,7 @@ namespace GreenLight.Core.Models
             }
 
             /// <remarks/>
-            public uint sharedWith
+            public string sharedWith
             {
                 get
                 {
@@ -416,10 +415,10 @@ namespace GreenLight.Core.Models
         public partial class MapDataIntersectionsIntersectionGeometryGenericLaneLaneAttributesLaneType
         {
 
-            private byte vehicleField;
+            private string vehicleField;
 
             /// <remarks/>
-            public byte vehicle
+            public string vehicle
             {
                 get
                 {
@@ -586,12 +585,12 @@ namespace GreenLight.Core.Models
         public partial class MapDataIntersectionsIntersectionGeometryGenericLaneConnectionConnectingLane
         {
 
-            private byte laneField;
+            private string laneField;
 
             private ulong maneuverField;
 
             /// <remarks/>
-            public byte lane
+            public string lane
             {
                 get
                 {
