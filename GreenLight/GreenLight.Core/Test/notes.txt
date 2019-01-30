@@ -1,0 +1,47 @@
+﻿Created 30/01/2019 Jin Khera. Jin.Khera@gmail.com
+
+These are notes describing how to create and use the test files. These files allow the following:
+
+1. Cache locally all MAP data for all testable juntions and pedestrian crossings. see MAP-XXXX.xml
+2. Cached route of junctions and pedestrian crossings. You can add/remove as needed. see A45-GLOSA-ReferencePoint.kml
+3. Simulated GPS points for a particular juntion or pedestrian crossing. see XXXX-IB.kml (inbound journey) or XXXX.OB.kml (outbound journey).
+These files essentially have 3-4 GPS points that track a vehicle heading towards a juntion or predestrian crossing. 
+
+In the example below the first point is the furthest from the juntion or pedestrian crossing and the last point is the closest. When testing a particular
+juntion you can tell the app which way you are heading by picking an inbound or outbound journey. The app then reads in the points and caluates an average heading.
+
+e.g
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Lyndon Road-EW</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7833149, 52.451995,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7836797, 52.452049,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7841303, 52.452198,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7845381, 52.452283,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
