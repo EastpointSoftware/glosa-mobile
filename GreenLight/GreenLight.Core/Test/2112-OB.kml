@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Lyndon Road-WE</name>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7899534, 52.453819,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7893419, 52.453643,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <Point>
+        <coordinates>
+          -1.7887947, 52.453496,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
