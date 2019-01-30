@@ -72,37 +72,30 @@ namespace GreenLight.Core.ViewModels
 
             _vehicleService.VehicleEventHandler += VehicleServiceEventHandler;
 
-            if (Settings.EnableIntersectionMode == false && Settings.EnableTestRoute == false)
+            // Here we are forcing to use the Advanced Calculator
+            AdvisoryCalculatorMode advisoryCalculatorMode = AdvisoryCalculatorMode.Basic;
+            Settings.EnableAdvancedCalculator = true;
+            if (Settings.EnableAdvancedCalculator == true)
             {
-                Debug.WriteLine("Failed To Start Vehicle Service");
-                GLOSAMessage = "Unsupported mode. Enable a test mode via settings";
+                advisoryCalculatorMode = AdvisoryCalculatorMode.Advanced;
+            }
+
+            if (Settings.EnableIntersectionMode == true)
+            {
+                try
+                {
+                    List<GPSLocation> simulatedGPSHistory = KMLHelper.GLOSATestRouteIntersectionHistory(Settings.IntersectionId, Settings.RouteDirectionOption);
+                    _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), Settings.IntersectionId, Settings.VehicleManeuverDirection, Settings.RouteDirectionOption, simulatedGPSHistory, advisoryCalculatorMode);
+                }
+                catch (Exception e)
+                {
+                    GLOSAMessage = $"Intersection Id not recognised ({Settings.IntersectionId}) or Direction not valid)";
+                }
+
             }
             else
             {
-                // Here we are forcing to use the Advanced Calculator
-                AdvisoryCalculatorMode advisoryCalculatorMode = AdvisoryCalculatorMode.Basic;
-                Settings.EnableAdvancedCalculator = true;
-                if (Settings.EnableAdvancedCalculator == true)
-                {
-                    advisoryCalculatorMode = AdvisoryCalculatorMode.Advanced;
-                }
-
-                if (Settings.EnableTestRoute == true)
-                {
-                    _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), "GLOSA A45", Settings.VehicleManeuverDirection, WaypointDetectionMethod.GPSHistoryDirection, advisoryCalculatorMode);
-                }
-                else if (Settings.EnableIntersectionMode == true)
-                {
-                    try
-                    {
-                        List<GPSLocation> simulatedGPSHistory = KMLHelper.GLOSATestRouteIntersectionHistory(Settings.IntersectionId, Settings.RouteDirectionOption);
-                        _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), Settings.IntersectionId, Settings.VehicleManeuverDirection, Settings.RouteDirectionOption, simulatedGPSHistory, advisoryCalculatorMode);
-                    }
-                    catch (Exception e)
-                    {
-                        GLOSAMessage = $"Intersection Id not recognised ({Settings.IntersectionId}) or Direction not valid)";
-                    }
-                }
+                _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), "GLOSA", Settings.VehicleManeuverDirection, WaypointDetectionMethod.GPSHistoryDirection, advisoryCalculatorMode);
             }
         }
 

@@ -56,23 +56,15 @@ namespace GreenLight.Droid.Views
             var buttonGroupDirections = this.FindViewById<RadioGroup>(Resource.Id.radio_group_direction);
             buttonGroupDirections.CheckedChange += Directions_ButtonGroup_CheckedChange;
 
-            int buttonDirectionId = Resource.Id.radio_ANY;
+            int buttonDirectionId = Resource.Id.radio_IB;
             switch (Settings.RouteDirectionOption)
             {
-                case Constants.SETTINGS_ROUTE_DIRECTION_ANY:
-                    buttonDirectionId = Resource.Id.radio_ANY;
+                case Constants.SETTINGS_ROUTE_DIRECTION_InBound:
+                    buttonDirectionId = Resource.Id.radio_IB;
                     break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_NS:
-                    buttonDirectionId = Resource.Id.radio_NS;
+                case Constants.SETTINGS_ROUTE_DIRECTION_OutBound:
+                    buttonDirectionId = Resource.Id.radio_OB;
                     break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_SN:
-                    buttonDirectionId = Resource.Id.radio_SN;
-                    break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_EW:
-                    buttonDirectionId = Resource.Id.radio_EW;
-                    break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_WE:
-                    buttonDirectionId = Resource.Id.radio_WE;
                     break;
                 default:
                     break;
@@ -84,23 +76,14 @@ namespace GreenLight.Droid.Views
 
         private void Directions_ButtonGroup_CheckedChange(object sender, RadioGroup.CheckedChangeEventArgs e)
         {
-            int directionId = Resource.Id.radio_ANY;
+            int directionId = Constants.SETTINGS_ROUTE_DIRECTION_ANY;
             switch (e.CheckedId)
             {
-                case Resource.Id.radio_ANY:
-                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_ANY;
+                case Resource.Id.radio_IB:
+                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_InBound;
                     break;
-                case Resource.Id.radio_NS:
-                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_NS;
-                    break;
-                case Resource.Id.radio_SN:
-                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_SN;
-                    break;
-                case Resource.Id.radio_EW:
-                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_EW;
-                    break;
-                case Resource.Id.radio_WE:
-                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_WE;
+                case Resource.Id.radio_OB:
+                    directionId = Constants.SETTINGS_ROUTE_DIRECTION_OutBound;
                     break;
                 default:
                     break;

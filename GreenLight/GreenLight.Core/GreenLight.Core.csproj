@@ -106,6 +106,7 @@
     <EmbeddedResource Include="Test\MAP-4437.xml" />
     <EmbeddedResource Include="Test\MAP-4439.xml" />
     <EmbeddedResource Include="Test\MAP-4451.xml" />
+    <Content Include="Test\notes.txt" />
     <Content Include="_Documents\GLOSAEventLogCreateTable.sql" />
     <Content Include="_Documents\GLOSAMonitoringLogCreateTable.sql" />
   </ItemGroup>
@@ -115,29 +116,27 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Test\A45-GLOSA-ReferencePoint.kml" />
+    <EmbeddedResource Include="Test\GLOSA-MAP-CHACHE.kml" />
     <EmbeddedResource Include="Test\Eastpoint-ReferencePoint.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-1991.kml" />
+    <EmbeddedResource Include="Test\1991-OB.kml" />
     <EmbeddedResource Include="Test\2112-OB.kml" />
     <EmbeddedResource Include="Test\2112-IB.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-SN-2112.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2111.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-SN-2111.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-1994.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2111.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2110.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2110.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-1991.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-SN-1991.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-1992.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-1992.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-1994.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2130.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2130.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2115.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2115.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-EW-2105.kml" />
-    <EmbeddedResource Include="Test\A45-GLOSA-GPS-History-WE-2105.kml" />
+    <EmbeddedResource Include="Test\2111-IB.kml" />
+    <EmbeddedResource Include="Test\1994-IB.kml" />
+    <EmbeddedResource Include="Test\2111-OB.kml" />
+    <EmbeddedResource Include="Test\2110-OB.kml" />
+    <EmbeddedResource Include="Test\2110-IB.kml" />
+    <EmbeddedResource Include="Test\1991-IB.kml" />
+    <EmbeddedResource Include="Test\1992-IB.kml" />
+    <EmbeddedResource Include="Test\1992-OB.kml" />
+    <EmbeddedResource Include="Test\1994-OB.kml" />
+    <EmbeddedResource Include="Test\2130-OB.kml" />
+    <EmbeddedResource Include="Test\2130-IB.kml" />
+    <EmbeddedResource Include="Test\2115-OB.kml" />
+    <EmbeddedResource Include="Test\2115-IB.kml" />
+    <EmbeddedResource Include="Test\2105-IB.kml" />
+    <EmbeddedResource Include="Test\2105-OB.kml" />
+    <EmbeddedResource Include="Test\2107-IB.kml" />
     <None Include="Test\4435-OB.kml" />
     <EmbeddedResource Include="Test\4437-IB.kml" />
   </ItemGroup>

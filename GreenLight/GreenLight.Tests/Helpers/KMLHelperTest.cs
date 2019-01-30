@@ -35,7 +35,7 @@ namespace GreenLight.Tests.Helpers
         public void LoadPlacemarksFromFile_WithA45GLOSAReferencePoint_ReturnResultShouldNotBeEmptyList()
         {
             //arrange
-            string inputTestFile = "GreenLight.Core.Test.A45-GLOSA-ReferencePoint.kml";
+            string inputTestFile = "GreenLight.Core.Test.GLOSA-MAP-CHACHE.kml";
             //act
             var actualResult =  KMLHelper.LoadPlacemarksFromFile(inputTestFile);
             //assert

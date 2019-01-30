@@ -3,7 +3,7 @@
 These are notes describing how to create and use the test files. These files allow the following:
 
 1. Cache locally all MAP data for all testable juntions and pedestrian crossings. see MAP-XXXX.xml
-2. Cached route of junctions and pedestrian crossings. You can add/remove as needed. see A45-GLOSA-ReferencePoint.kml
+2. Cached route of junctions and pedestrian crossings. You can add/remove as needed. see GLOSA-MAP-CHACHE.kml
 3. Simulated GPS points for a particular juntion or pedestrian crossing. see XXXX-IB.kml (inbound journey) or XXXX.OB.kml (outbound journey).
 These files essentially have 3-4 GPS points that track a vehicle heading towards a juntion or predestrian crossing. 
 

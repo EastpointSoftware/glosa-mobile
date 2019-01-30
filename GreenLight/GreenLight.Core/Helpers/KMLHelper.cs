@@ -118,14 +118,14 @@ namespace GreenLight.Core.Helpers
 
         public static IList<kmlDocumentPlacemark> GLOSATestRoute()
         {
-            var list = LoadPlacemarksFromFile("GreenLight.Core.Test.A45-GLOSA-ReferencePoint.kml") as List<kmlDocumentPlacemark>;
+            var list = LoadPlacemarksFromFile("GreenLight.Core.Test.GLOSA-MAP-CHACHE.kml") as List<kmlDocumentPlacemark>;
 
             return list;
         }
 
         public static kmlDocumentPlacemark GLOSATestRoutePlacemark(string id)
         {
-            var list = LoadPlacemarksFromFile("GreenLight.Core.Test.A45-GLOSA-ReferencePoint.kml") as List<kmlDocumentPlacemark>;
+            var list = LoadPlacemarksFromFile("GreenLight.Core.Test.GLOSA-MAP-CHACHE.kml") as List<kmlDocumentPlacemark>;
             kmlDocumentPlacemark placemark = list.Find(obj => obj.name.Contains(id));
             return placemark;
         }
@@ -163,16 +163,10 @@ namespace GreenLight.Core.Helpers
                 case Constants.SETTINGS_ROUTE_DIRECTION_ANY:
                     name = "";
                     break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_NS:
-                    name = "NS";
-                    break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_SN:
-                    name = "SN";
-                    break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_EW:
+                case Constants.SETTINGS_ROUTE_DIRECTION_InBound:
                     name = "IB";
                     break;
-                case Constants.SETTINGS_ROUTE_DIRECTION_WE:
+                case Constants.SETTINGS_ROUTE_DIRECTION_OutBound:
                     name = "OB";
                     break;
                 default:
