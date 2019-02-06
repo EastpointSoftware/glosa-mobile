@@ -30,6 +30,7 @@ using GreenLight.Core.Contracts;
 using GreenLight.Core.Helpers;
 using GreenLight.Core.Models;
 using static GreenLight.Core.Helpers.NodeFinder;
+using GreenLight.Core.Objects;
 
 namespace GreenLight.Core.Services
 {
@@ -72,7 +73,7 @@ namespace GreenLight.Core.Services
 
         public NavigationService()
         {
-
+            _mapDataCache = XMLHelper.LoadMAPData().ToList();
         }
 
         public NavigationService(IMvxMessenger messenger, IMvxLocationWatcher watcher, ILocationService locationService)
@@ -80,6 +81,7 @@ namespace GreenLight.Core.Services
             _messenger = messenger;
             _messageToken = _messenger.Subscribe<LocationMessage>(OnLocationMessage);
             _locationService = locationService;
+            _mapDataCache = XMLHelper.LoadMAPData().ToList();
         }
 
         #region Implementation Public
@@ -120,14 +122,14 @@ namespace GreenLight.Core.Services
         {
             return LocateWaypointOnRoute(method, _testRoute, GetGPSHistory(), 0, waypointIndex);
         }
-        
+
         public kmlDocumentPlacemark LocateWaypointOnRoute(WaypointDetectionMethod method, List<kmlDocumentPlacemark> route, List<GPSLocation> history, double heading, int waypointIndex = 0)
         {
             kmlDocumentPlacemark nearestMAPPlacemark = null;
 
             var location = history.Last();
 
-            var sortedMAPPoints = GLOSAHelper.SortMAPDataByDistanceFromCurrentLocation(route, location.Latitude, location.Longitude).ToList();
+            var sortedMAPPoints = GLOSAHelper.SortMAPKMLDataByDistanceFromCurrentLocation(route, location.Latitude, location.Longitude).ToList();
 
             if (sortedMAPPoints != null && sortedMAPPoints.Count > 0)
             {
@@ -139,7 +141,7 @@ namespace GreenLight.Core.Services
                 {
                     // No valid method chosen
                     throw new Exception("Waypoint Detection Method not implemented.");
-                    
+
                 }
                 else if (method == WaypointDetectionMethod.GPSHistoryDirection)
                 {
@@ -168,7 +170,10 @@ namespace GreenLight.Core.Services
                         waypoint.distance = Distance.CalculateDistanceBetween2PointsKMs(to.Latitude, to.Longitude, waypoint.GPSLocation.Latitude, waypoint.GPSLocation.Longitude);
                     }
 
-                    var sortedByBearingAndDistance = listOfWaypoints.OrderBy(wp => wp.distance).ThenBy(wp => wp.angleDiff).Where(wp => wp.angleDiff >= -50 && wp.angleDiff <= 50 && wp.distance <= 1.0);
+                    var sortedByBearingAndDistance = listOfWaypoints.OrderBy(wp => wp.distance)
+                        .ThenBy(wp => wp.angleDiff)
+                        .Where(wp => wp.angleDiff >= -50 && wp.angleDiff <= 50 && wp.distance <= 1.0);
+
                     if (sortedByBearingAndDistance != null && sortedByBearingAndDistance.Count() > waypointIndex)
                     {
                         var tn = sortedByBearingAndDistance.ToList()[waypointIndex];
@@ -183,6 +188,49 @@ namespace GreenLight.Core.Services
                 }
             }
             return nearestMAPPlacemark;
+        }
+
+        public MapData LocateWaypointWithLineOfSight(WaypointDetectionMethod method, int waypointIndex = 0, int viewArc = 0, double distance = 1.0)
+        {
+            return LocateWaypointWithLineOfSight(method, GetGPSHistory(), waypointIndex, viewArc, distance);
+        }
+
+        public MapData LocateWaypointWithLineOfSight(WaypointDetectionMethod method, List<GPSLocation> history, int waypointIndex = 0, int viewArc = 0, double distance = 1.0)
+        {
+            MapData waypoint = null;
+
+            var location = history.Last();
+
+            var sortedMAPPoints = GLOSAHelper.SortMAPDataByDistanceFromCurrentLocation(_mapDataCache, location.Latitude, location.Longitude);
+
+            if (sortedMAPPoints != null && sortedMAPPoints.Count > 0)
+            {
+                switch (method)
+                {
+                    case WaypointDetectionMethod.ShortestDistance:
+                        waypoint = sortedMAPPoints.First();
+                        break;
+                    case WaypointDetectionMethod.GPSHistoryDirection:
+                        GPSLocation to = history[history.Count - 1];
+                        double? vehicleHeading = LocationHelper.HeadingFromGPSTrail(history);
+
+                        List<IntersectionNode> listOfMAPDataWaypoints = IntersectionNode.IntersectionNodesFromMAPData(_mapDataCache).ToList();
+                        var filtered = IntersectionNode.Filter(listOfMAPDataWaypoints, vehicleHeading, history);
+                        var sortedByBearingAndDistance = IntersectionNode.SortIntersectionNodes(filtered, to, vehicleHeading, viewArc, distance).ToList();
+
+                        if (sortedByBearingAndDistance.Count() > waypointIndex)
+                        {
+                            var tn = sortedByBearingAndDistance.ToList()[waypointIndex];
+                            waypoint = tn.MapData;
+                        }
+                        
+                        break;
+                    default:
+                        throw new Exception("Waypoint Detection Method not implemented.");
+                        break;
+                }
+            }
+            return waypoint;
         }
 
         #endregion
@@ -249,16 +297,18 @@ namespace GreenLight.Core.Services
         {
             if (_routeMode == true)
             {
-                var nextMAPPlacemark = LocateWaypointOnRoute(_waypointDetectionMethod, _testRoute, GetGPSHistory(), 0);
+                _currentWaypoint = null;
+
+                var waypoint = LocateWaypointWithLineOfSight(WaypointDetectionMethod.GPSHistoryDirection, 0, 50, 1.0);
+                if (waypoint == null)
+                    return;
+                var waypointID = waypoint.intersections.IntersectionGeometry.id.id.ToString();
+                var nextMAPPlacemark = _testRoute.Find(match => match.name.Contains(waypointID));
                 if (nextMAPPlacemark != null)
                 {
                     var nextIntersectionId = KMLHelper.IntersectionIdOfPlacemark(nextMAPPlacemark);
-                    _currentWaypointId = nextIntersectionId;
+                    _currentWaypointId = waypoint.intersections.IntersectionGeometry.id.id.ToString();
                     _currentWaypoint = nextMAPPlacemark;
-                }
-                else
-                {
-                    _currentWaypoint = null;
                 }
             }
         }
@@ -370,6 +420,7 @@ namespace GreenLight.Core.Services
 
         private bool _routeMode;
         List<kmlDocumentPlacemark> _testRoute;
+        List<MapData> _mapDataCache;
         private string _routeId;
         private int _routeDirection;
         private string _routeSession;

@@ -18,7 +18,9 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
 
  */
 
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
 
@@ -28,14 +30,14 @@ namespace GreenLight.Core.Helpers
 {
     public static class XMLHelper
     {
-        public static MapData LoadMAPDataForIntersection(string intersectionId)
+        public static MapData LoadMAPDataFromFile(string filename)
         {
             MapData data = null;
 
-            string file = $"GreenLight.Core.Test.MAP-{intersectionId}.xml";
+            //string filename = $"GreenLight.Core.Test.{file}";
             var assembly = typeof(XMLHelper).GetTypeInfo().Assembly;
 
-            Stream stream = assembly.GetManifestResourceStream(file);
+            Stream stream = assembly.GetManifestResourceStream(filename);
 
             if (stream != null)
             {
@@ -46,9 +48,30 @@ namespace GreenLight.Core.Helpers
             }
             else
             {
-                throw new FileNotFoundException("Could not find file", file);
+                throw new FileNotFoundException("Could not find file", filename);
             }
 
+            return data;
+        }
+
+        public static IList<MapData> LoadMAPData()
+        {
+            IList<MapData> data = new List<MapData>();
+
+            var assembly = typeof(XMLHelper).GetTypeInfo().Assembly;
+
+            var resourceNames = assembly.GetManifestResourceNames();
+            if (resourceNames.Length == 0)
+            {
+                return data;
+            }
+
+            var MAPDataFiles = resourceNames.Where(name => name.Contains(".MAP-"));
+            foreach (var file in MAPDataFiles)
+            {
+                var mapData = XMLHelper.LoadMAPDataFromFile(file);
+                data.Add(mapData);
+            }
             return data;
         }
 

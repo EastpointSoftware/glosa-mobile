@@ -403,7 +403,7 @@ namespace GreenLight.Core.Helpers
             return movementTime > CurrentCROCSTime;
         }
 
-        public static IList<kmlDocumentPlacemark> SortMAPDataByDistanceFromCurrentLocation(IList<kmlDocumentPlacemark> mapData, double latitude, double longitude)
+        public static IList<kmlDocumentPlacemark> SortMAPKMLDataByDistanceFromCurrentLocation(IList<kmlDocumentPlacemark> mapData, double latitude, double longitude)
         {
             var sortedList = mapData.
                 OrderBy(m => Distance.CalculateDistanceBetween2PointsKMs(
@@ -413,6 +413,21 @@ namespace GreenLight.Core.Helpers
 
             return sortedList;
         }
+
+        public static IList<MapData> SortMAPDataByDistanceFromCurrentLocation(IList<MapData> mapData, double latitude, double longitude)
+        {
+            if (mapData == null)
+                return mapData;
+
+            var sortedList = mapData.
+                OrderBy(m => Distance.CalculateDistanceBetween2PointsKMs(
+                double.Parse((m.intersections.IntersectionGeometry.refPoint.lat / Constants.MAPCoordinateIntConverterUnit).ToString()),
+                double.Parse((m.intersections.IntersectionGeometry.refPoint.@long / Constants.MAPCoordinateIntConverterUnit).ToString()),
+                latitude, longitude)).ToList();
+
+            return sortedList;
+        }
+
         #endregion
 
         #region TEST

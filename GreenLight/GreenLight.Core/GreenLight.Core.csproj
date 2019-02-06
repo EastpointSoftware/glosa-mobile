@@ -52,6 +52,7 @@
     <Compile Include="Helpers\AdvancedAdvisorySpeedCalculator.cs" />
     <Compile Include="Helpers\AdvisorySpeedCalculationResult.cs" />
     <Compile Include="Helpers\GLOSAHelper.cs" />
+    <Compile Include="Helpers\IntersectionHelper.cs" />
     <Compile Include="Helpers\KMLHelper.cs" />
     <Compile Include="Helpers\LocationHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
@@ -60,12 +61,14 @@
     <Compile Include="Helpers\Distance.cs" />
     <Compile Include="Helpers\LocationMessage.cs" />
     <Compile Include="Helpers\SpeedConverter.cs" />
+    <Compile Include="Helpers\WaypointHelper.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
     <Compile Include="Models\CROCSXMLModels.cs" />
     <Compile Include="Models\GLOSAMonitoringLog.cs" />
     <Compile Include="Models\GLOSAEventLog.cs" />
     <Compile Include="Models\RouteXMLModel.cs" />
     <Compile Include="Helpers\StateTimeMovementEvent.cs" />
+    <Compile Include="Objects\IntersectionNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataAnalyticsService.cs" />
     <Compile Include="Services\GLOSAWebService.cs" />

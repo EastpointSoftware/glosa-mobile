@@ -166,8 +166,8 @@ namespace GreenLight.Core.Services
                     if (_navigationService.IsNavigating == true && _navigationService.IsNavigatingToWaypoint == true && _navigationService.Waypoint != null)
                     {
                         // GET MAP SPAT data of intersection
-                        var nextWaypoint = _navigationService.LocateWaypointOnRoute(WaypointDetectionMethod.GPSHistoryDirection, 1);
-                        var nexyWaypointId = nextWaypoint != null ? KMLHelper.IntersectionIdOfPlacemark(nextWaypoint) : null;
+                        var nextWaypoint = _navigationService.LocateWaypointWithLineOfSight(WaypointDetectionMethod.GPSHistoryDirection, 1, 50);
+                        var nexyWaypointId = nextWaypoint != null ? nextWaypoint.intersections.IntersectionGeometry.id.id.ToString() : null;
                         Task.Run(async () => await _GLOSAWebService.SyncMAPSPATAsync(_navigationService.WayPointId, nexyWaypointId));
 
                         if (HasMapSPATDataFromCellular() == true || HasMapSPATDataFromWiFi() == true)
@@ -455,7 +455,8 @@ namespace GreenLight.Core.Services
             {
                 if (Settings.EnableIntersectionMode == true)
                 {
-                    data = XMLHelper.LoadMAPDataForIntersection(Settings.IntersectionId);
+                    string file = $"MAP-{Settings.IntersectionId}.xml";
+                    data = XMLHelper.LoadMAPDataFromFile(file);
                 }
             }
             catch

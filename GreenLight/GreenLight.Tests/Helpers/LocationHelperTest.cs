@@ -96,7 +96,8 @@ namespace GreenLight.Tests.Helpers
             var gpsHistory = KMLHelper.GLOSATestRouteIntersectionHistory(intersectionId, 2);
 
             // Load Map from file
-            MapData map = XMLHelper.LoadMAPDataForIntersection(intersectionId);
+            string file = $"MAP-{Settings.IntersectionId}.xml";
+            MapData map = XMLHelper.LoadMAPDataFromFile(file);
             GLOSAResult result = GLOSAHelper.ProjectedLaneForManeuver(map, gpsHistory, 0, Constants.MANEUVER_DIRECTION_AHEAD);
             var lane = (MapDataIntersectionsIntersectionGeometryGenericLane)result.Object;
             var nodes = GLOSAHelper.ExtractTrafficNodesFromLane(lane);
@@ -121,22 +122,47 @@ namespace GreenLight.Tests.Helpers
         }
 
         [Fact]
-        public async void IsNextWAypointInSameDirection_ShouldReturnTrue()
+        public async void IsNextWaypointInSameDirection_ShouldReturnTrue()
         {
             // arrange
 
-            //SETTINGS_ROUTE_DIRECTION_NS = 1: - Not Supported Yet
-            //SETTINGS_ROUTE_DIRECTION_SN = 2: - Not Supported Yet
-            //SETTINGS_ROUTE_DIRECTION_EW = 3;
-            //SETTINGS_ROUTE_DIRECTION_WE = 4;
+            //SETTINGS_ROUTE_DIRECTION_ANY = 0: - Not Supported Yet
+            //SETTINGS_ROUTE_DIRECTION_IB = 1: - Not Supported Yet
+            //SETTINGS_ROUTE_DIRECTION_OB = 2;
 
             var intersectionId = "2105";
             var route = KMLHelper.GLOSATestRoute().ToList();
-            var gpsHistory = KMLHelper.GLOSATestRouteIntersectionHistory(intersectionId, 4);
+            var gpsHistory = KMLHelper.GLOSATestRouteIntersectionHistory(intersectionId, 2);
 
             NavigationService navigationService = new NavigationService();
-            var waypoint = navigationService.LocateWaypointOnRoute(WaypointDetectionMethod.DeviceHeading, route, gpsHistory, 0, 0);
+            var waypoint = navigationService.LocateWaypointOnRoute(WaypointDetectionMethod.GPSHistoryDirection, route, gpsHistory, 0, 0);
            
+            bool expectedResult = true;
+            //act
+            bool actualResult = waypoint != null;
+            //assert
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        [Fact]
+        public void IsNextMAPDataWaypointInSameDirectionAsTravel_ShouldReturnTrue()
+        {
+            // arrange
+
+            //SETTINGS_ROUTE_DIRECTION_ANY = 0: - Not Supported Yet
+            //SETTINGS_ROUTE_DIRECTION_IB = 1: - Not Supported Yet
+            //SETTINGS_ROUTE_DIRECTION_OB = 2;
+
+            //< name > 2130 - Gilberstone Avenue </ name >
+            // 2130 only has inbound SPAT
+
+            var intersectionId = "2130";
+            var route = KMLHelper.GLOSATestRoute().ToList();
+            var gpsHistory = KMLHelper.GLOSATestRouteIntersectionHistory(intersectionId, 1);
+
+            NavigationService navigationService = new NavigationService();
+            var waypoint = navigationService.LocateWaypointWithLineOfSight(WaypointDetectionMethod.GPSHistoryDirection, gpsHistory, 0, 50, 0.04);
+
             bool expectedResult = true;
             //act
             bool actualResult = waypoint != null;
@@ -149,14 +175,13 @@ namespace GreenLight.Tests.Helpers
         {
             // arrange
 
-            //SETTINGS_ROUTE_DIRECTION_NS = 1: - Not Supported Yet
-            //SETTINGS_ROUTE_DIRECTION_SN = 2: - Not Supported Yet
-            //SETTINGS_ROUTE_DIRECTION_EW = 3;
-            //SETTINGS_ROUTE_DIRECTION_WE = 4;
+            //SETTINGS_ROUTE_DIRECTION_ANY = 0: - Not Supported Yet
+            //SETTINGS_ROUTE_DIRECTION_IB = 1: - Not Supported Yet
+            //SETTINGS_ROUTE_DIRECTION_OB = 2;
 
             var intersectionId = "1992";
             var route = KMLHelper.GLOSATestRoute().ToList();
-            var gpsHistory = KMLHelper.GLOSATestRouteIntersectionHistory(intersectionId, 3);
+            var gpsHistory = KMLHelper.GLOSATestRouteIntersectionHistory(intersectionId, 2);
 
             NavigationService navigationService = new NavigationService();
 
