@@ -19,7 +19,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
  */
 
 using System;
-
+using System.Collections.Generic;
 using static GreenLight.Core.Helpers.NodeFinder;
 
 namespace GreenLight.Core.Helpers
@@ -70,6 +70,16 @@ namespace GreenLight.Core.Helpers
             var bearing = DegreeBearing(lat1, lon1, lat2, lon2);
 
             return bearing;
+        }
+
+        public static double? HeadingFromGPSTrail(List<GPSLocation> gpsTrail)
+        {
+            GPSLocation from = gpsTrail[gpsTrail.Count - 2];
+            GPSLocation to = gpsTrail[gpsTrail.Count - 1];
+
+            double? vehicleBearing = LocationHelper.HeadingBetweenTwoGPSLocations(from, to);
+
+            return vehicleBearing;
         }
 
         public static double DegreeBearing(double lat1, double lon1, double lat2, double lon2)

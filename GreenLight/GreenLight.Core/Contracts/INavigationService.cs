@@ -91,5 +91,26 @@ namespace GreenLight.Core.Contracts
         /// <param name="waypointIndex"></param>
         /// <returns></returns>
         kmlDocumentPlacemark LocateWaypointOnRoute(WaypointDetectionMethod method, List<kmlDocumentPlacemark> route, List<GPSLocation> history, double heading, int waypointIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="waypointIndex"></param>
+        /// <param name="viewArc">If zero then arc is 360 Degrees</param>
+        /// <param name="distance">Distance in KM</param>
+        /// <returns></returns>
+        MapData LocateWaypointWithLineOfSight(WaypointDetectionMethod method, int waypointIndex = 0, int viewArc = 0, double distance = 1.0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="history"></param>
+        /// <param name="waypointIndex"></param>
+        /// <param name="viewArc"></param>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        MapData LocateWaypointWithLineOfSight(WaypointDetectionMethod method, List<GPSLocation> history, int waypointIndex = 0, int viewArc = 0, double distance = 1.0);
     }
 }
