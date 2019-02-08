@@ -140,8 +140,16 @@
     <EmbeddedResource Include="Test\2105-IB.kml" />
     <EmbeddedResource Include="Test\2105-OB.kml" />
     <EmbeddedResource Include="Test\2107-IB.kml" />
+    <EmbeddedResource Include="Test\4426-IB.kml" />
+    <EmbeddedResource Include="Test\4426-OB.kml" />
+    <EmbeddedResource Include="Test\4421-IB.kml" />
+    <EmbeddedResource Include="Test\4421-OB.kml" />
+    <EmbeddedResource Include="Test\4425-IB.kml" />
+    <EmbeddedResource Include="Test\4425-OB.kml" />
     <None Include="Test\4435-OB.kml" />
     <EmbeddedResource Include="Test\4437-IB.kml" />
+    <EmbeddedResource Include="Test\4439-IB.kml" />
+    <EmbeddedResource Include="Test\4439-OB.kml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
