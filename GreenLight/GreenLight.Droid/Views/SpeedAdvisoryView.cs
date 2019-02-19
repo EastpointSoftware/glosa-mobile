@@ -107,12 +107,6 @@ namespace GreenLight.Droid.Views
 
             if (ActivityCompat.ShouldShowRequestPermissionRationale(this, permission))
             {
-                var layout = FindViewById<LinearLayout>(Resource.Layout.FirstView);
-                //Explain to the user why we need to read the contacts
-                Snackbar.Make(layout, "Location access is required to use the GLOSA App.", Snackbar.LengthIndefinite)
-                        .SetAction("OK", v => ActivityCompat.RequestPermissions(this, PermissionsLocation, RequestLocationId))
-                        .Show();
-
                 return;
             }
 

@@ -72,22 +72,14 @@ namespace GreenLight.Core.Services
 
         public void Start()
         {
-            try
+            if (_watcher.Started == false)
             {
-                if (_watcher.Started == false)
+                _watcher.OnPermissionChanged += _permissionChanged;
+                _watcher.Start(new MvxLocationOptions()
                 {
-                    _watcher.OnPermissionChanged += _permissionChanged;
-                    _watcher.Start(new MvxLocationOptions()
-                    {
-                        Accuracy = MvxLocationAccuracy.Fine,
-                        TrackingMode = MvxLocationTrackingMode.Foreground,
-                    }, _onLocation, _onError);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                throw e;
+                    Accuracy = MvxLocationAccuracy.Fine,
+                    TrackingMode = MvxLocationTrackingMode.Foreground,
+                }, _onLocation, _onError);
             }
         }
 

@@ -236,7 +236,7 @@ namespace GreenLight.Core.ViewModels
                             message = "No network connection";
                             break;
                         case VehicleServiceStatus.GPSError:
-                            message = "Waiting for GPS";
+                            message = "Waiting for GPS (Check permissions)";
                             break;
                         case VehicleServiceStatus.SNTPError:
                             message = "SNTP sync failed. Using device time";
