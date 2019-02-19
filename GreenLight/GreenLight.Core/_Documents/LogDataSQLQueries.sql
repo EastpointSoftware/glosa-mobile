@@ -12,3 +12,22 @@ select [URL] ,Count([URL]) from GLOSAMonitoringLog where statuscode = 200 and cr
 select top 50 AVG(Latency) from GLOSAMonitoringLog where StatusCode = 200 order by createdAt desc
 
 select count(id) from GLOSAEventLog order by createdAt desc
+
+select VehicleId,
+createdAt,
+Longitude,
+Latitude,
+DeviceTime,
+TimeOffset,
+IntersectionId,
+[Event],
+Distance,
+RouteSession,
+Speed,
+CalculationAdvisory,
+SPAT,
+heading,
+MAP,
+Lane from dbo.GLOSAEventLog 
+where createdAt between '2019-FEB-12' and '2019-FEB-19' 
+order by createdAt desc
