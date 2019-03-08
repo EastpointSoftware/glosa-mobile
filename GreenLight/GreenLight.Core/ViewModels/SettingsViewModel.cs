@@ -18,6 +18,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
 
  */
 
+using Xamarin.Essentials;
+
 using MvvmCross.Core.ViewModels;
 
 using GreenLight.Core.Helpers;
@@ -29,7 +31,7 @@ namespace GreenLight.Core.ViewModels
         #region Construction
         public SettingsViewModel()
         {
-            
+            _appVersionBuild = $"Build: {AppInfo.VersionString} ({AppInfo.BuildString})";
         }
         #endregion
 
@@ -192,6 +194,12 @@ namespace GreenLight.Core.ViewModels
             }
         }
 
+        public string AppVersionBuild
+        {
+            //get => $"Build: {AppInfo.VersionString} ({AppInfo.BuildString})";
+            get => _appVersionBuild;
+        }
+
         #endregion
 
         #region Command
@@ -233,6 +241,7 @@ namespace GreenLight.Core.ViewModels
         private bool _enableWiFiOnlyMode = Settings.EnableWiFiModeOnly;
         private string _wifiNetworkName = Settings.WiFiNetworkName;
         private string _wifiNetworkPassword = Settings.WiFiNetworkPassword;
+        private string _appVersionBuild;
 
         private IMvxCommand _changeLaneManeuverCommand;
         #endregion

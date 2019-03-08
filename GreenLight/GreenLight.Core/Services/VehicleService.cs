@@ -94,7 +94,7 @@ namespace GreenLight.Core.Services
             Debug.WriteLine("Starting Vehicle Service");
 
             _advisoryCalculatorMode = advisoryCalculatorMode;
-            _loggingEnabled = true;
+            _loggingEnabled = false;
             _allowedVehicleManeuvers = allowedVehicleManeuvers;
 
             _navigationService.Start(route, intersectionId, allowedVehicleManeuvers, simulatedDirection, simulatedGPSLocations);
@@ -178,6 +178,14 @@ namespace GreenLight.Core.Services
                     PostVehicleMessage(VehicleServiceStatus.GPSNotAvailable);
                     Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Waiting for GPS");
                     LogDataEvent("Waiting for GPS");
+                    return @continue;
+                }
+
+                if (Settings.EnableIntersectionMode == false && string.IsNullOrEmpty(Settings.UniqueVehicleDeviceAppId.Trim()) == true)
+                {
+                    PostVehicleMessage(VehicleServiceStatus.VehicleIdNotSet);
+                    Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Vehicle Id missing");
+                    LogDataEvent("Vehicle Id missing");
                     return @continue;
                 }
 
