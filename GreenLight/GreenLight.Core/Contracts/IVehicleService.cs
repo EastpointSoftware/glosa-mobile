@@ -31,12 +31,18 @@ namespace GreenLight.Core.Contracts
     {
         Ok,
         NetworkConnectionError,
-        GPSError,
+        GPSNotAvailable,
+        GPSPermissionError,
         SNTPError,
     }
 
     public interface IVehicleService
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        void Start();
+
         /// <summary>
         /// Starts the vehicle service with an intersectionid.
         /// </summary>

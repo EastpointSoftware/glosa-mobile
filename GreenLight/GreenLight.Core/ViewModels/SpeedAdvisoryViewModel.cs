@@ -72,32 +72,6 @@ namespace GreenLight.Core.ViewModels
             base.Appearing();
 
             _vehicleService.VehicleEventHandler += VehicleServiceEventHandler;
-
-            // Here we are forcing to use the Advanced Calculator
-            AdvisoryCalculatorMode advisoryCalculatorMode = AdvisoryCalculatorMode.Basic;
-            Settings.EnableAdvancedCalculator = true;
-            if (Settings.EnableAdvancedCalculator == true)
-            {
-                advisoryCalculatorMode = AdvisoryCalculatorMode.Advanced;
-            }
-
-            if (Settings.EnableIntersectionMode == true)
-            {
-                try
-                {
-                    List<GPSLocation> simulatedGPSHistory = KMLHelper.GLOSATestRouteIntersectionHistory(Settings.IntersectionId, Settings.RouteDirectionOption);
-                    _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), Settings.IntersectionId, Settings.VehicleManeuverDirection, Settings.RouteDirectionOption, simulatedGPSHistory, advisoryCalculatorMode);
-                }
-                catch (Exception e)
-                {
-                    GLOSAMessage = $"Intersection Id not recognised ({Settings.IntersectionId}) or Direction not valid)";
-                }
-
-            }
-            else
-            {
-                _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), "GLOSA", Settings.VehicleManeuverDirection, WaypointDetectionMethod.GPSHistoryDirection, advisoryCalculatorMode);
-            }
         }
 
         public override void Disappearing()
@@ -182,7 +156,33 @@ namespace GreenLight.Core.ViewModels
         #endregion
 
         #region Implementation Public
+        public void Refresh()
+        {
+            // Here we are forcing to use the Advanced Calculator
+            AdvisoryCalculatorMode advisoryCalculatorMode = AdvisoryCalculatorMode.Basic;
+            Settings.EnableAdvancedCalculator = true;
+            if (Settings.EnableAdvancedCalculator == true)
+            {
+                advisoryCalculatorMode = AdvisoryCalculatorMode.Advanced;
+            }
 
+            if (Settings.EnableIntersectionMode == true)
+            {
+                try
+                {
+                    List<GPSLocation> simulatedGPSHistory = KMLHelper.GLOSATestRouteIntersectionHistory(Settings.IntersectionId, Settings.RouteDirectionOption);
+                    _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), Settings.IntersectionId, Settings.VehicleManeuverDirection, Settings.RouteDirectionOption, simulatedGPSHistory, advisoryCalculatorMode);
+                }
+                catch (Exception e)
+                {
+                    GLOSAMessage = $"Intersection Id not recognised ({Settings.IntersectionId}) or Direction not valid)";
+                }
+            }
+            else
+            {
+                _vehicleService.Start(GLOSAHelper.LoadTestRoute().ToList(), "GLOSA", Settings.VehicleManeuverDirection, WaypointDetectionMethod.GPSHistoryDirection, advisoryCalculatorMode);
+            }
+        }
         #endregion
 
         #region Implementation Private
@@ -235,8 +235,11 @@ namespace GreenLight.Core.ViewModels
                         case VehicleServiceStatus.NetworkConnectionError:
                             message = "No network connection";
                             break;
-                        case VehicleServiceStatus.GPSError:
-                            message = "Waiting for GPS (Check permissions)";
+                        case VehicleServiceStatus.GPSPermissionError:
+                            message = "GPS (Check permissions)";
+                            break;
+                        case VehicleServiceStatus.GPSNotAvailable:
+                            message = "Waiting for GPS";
                             break;
                         case VehicleServiceStatus.SNTPError:
                             message = "SNTP sync failed. Using device time";
@@ -469,7 +472,7 @@ namespace GreenLight.Core.ViewModels
                     errorMessage = "Unable to determine signal group";
                     break;
                 case GLOSAErrors.UnableToProjectMovementStates:
-                    errorMessage = "SPAT message stale";
+                    errorMessage = "Waiting for update";
                     break;
                 case GLOSAErrors.SPATMessagedExpired:
                     errorMessage = "Waiting for SPAT message";

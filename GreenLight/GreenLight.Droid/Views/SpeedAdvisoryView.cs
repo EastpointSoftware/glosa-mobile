@@ -72,6 +72,7 @@ namespace GreenLight.Droid.Views
         {
             base.OnResume();
             RequestLocationPermissions();
+            ViewModel.Refresh();
             //RegisterReceiver(_broadcastReceiver, new IntentFilter("uk.co.eastpoint.GeofenceBroadcast"));
             // Code omitted for clarity
         }
