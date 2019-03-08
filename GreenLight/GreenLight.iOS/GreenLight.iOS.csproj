@@ -90,6 +90,7 @@
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <Compile Include="PlatformImplementations\AlertService.cs" />
     <Compile Include="PlatformImplementations\IPAddressManager.cs" />
@@ -352,10 +353,10 @@
       <Name>GreenLight.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets.xcassets\square-transparent-circle.imageset\" />
     <Folder Include="Assets.xcassets\LauncIcon.imageset\" />
+    <Folder Include="Assets.xcassets\square-transparent-circle.imageset\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

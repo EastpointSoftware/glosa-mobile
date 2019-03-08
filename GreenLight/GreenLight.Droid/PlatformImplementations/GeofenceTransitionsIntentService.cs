@@ -24,6 +24,7 @@ using Android.App;
 using Android.Content;
 using Android.Gms.Location;
 using Android.Graphics;
+using Android.Support.V4.App;
 using Android.Support.V7.App;
 using Android.Util;
 

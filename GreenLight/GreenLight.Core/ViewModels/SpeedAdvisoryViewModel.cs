@@ -244,6 +244,9 @@ namespace GreenLight.Core.ViewModels
                         case VehicleServiceStatus.SNTPError:
                             message = "SNTP sync failed. Using device time";
                             break;
+                        case VehicleServiceStatus.VehicleIdNotSet:
+                            message = "Vehicle Id missing";
+                            break;
                         default:
                             break;
                     }

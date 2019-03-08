@@ -34,6 +34,7 @@ namespace GreenLight.Core.Contracts
         GPSNotAvailable,
         GPSPermissionError,
         SNTPError,
+        VehicleIdNotSet,
     }
 
     public interface IVehicleService
