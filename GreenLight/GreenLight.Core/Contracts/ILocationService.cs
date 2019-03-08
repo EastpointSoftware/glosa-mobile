@@ -22,7 +22,7 @@ namespace GreenLight.Core.Contracts
 {
     public interface ILocationService
     {
-        bool IsEnabled { get; }
+        bool PermissionGranted { get; }
 
         bool IsAvaliable { get; }
 

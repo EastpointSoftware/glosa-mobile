@@ -49,7 +49,7 @@ namespace GreenLight.Droid
             base.OnCreate();
 
             //A great place to initialize Xamarin.Insights and Dependency Services!
-            AppCenter.Start(Constants.AZURE_APP_CENTER_ANDROID_KEY, typeof(Analytics), typeof(Crashes), typeof(Distribute));
+            AppCenter.Start(Constants.AZURE_APP_CENTER_ANDROID_KEY, typeof(Analytics), typeof(Crashes));
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 

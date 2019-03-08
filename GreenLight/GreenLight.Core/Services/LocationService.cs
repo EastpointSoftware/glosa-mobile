@@ -42,7 +42,6 @@ namespace GreenLight.Core.Services
         private readonly IMvxMessenger _messenger;
         private MvxGeoLocation _currentLocation;
         private bool _permissionGranted;
-        private bool _isEnabled;
         private bool _isAvailable;
         #endregion
 
@@ -63,7 +62,7 @@ namespace GreenLight.Core.Services
         #endregion
 
         #region Properties
-        public bool IsEnabled { get { return _isEnabled; } }
+        public bool PermissionGranted { get { return _permissionGranted; } }
 
         public bool IsAvaliable { get { return _isAvailable; } }
         #endregion
@@ -72,22 +71,14 @@ namespace GreenLight.Core.Services
 
         public void Start()
         {
-            try
+            if (_watcher.Started == false)
             {
-                if (_watcher.Started == false)
+                _watcher.OnPermissionChanged += _permissionChanged;
+                _watcher.Start(new MvxLocationOptions()
                 {
-                    _watcher.OnPermissionChanged += _permissionChanged;
-                    _watcher.Start(new MvxLocationOptions()
-                    {
-                        Accuracy = MvxLocationAccuracy.Fine,
-                        TrackingMode = MvxLocationTrackingMode.Foreground,
-                    }, _onLocation, _onError);
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                throw e;
+                    Accuracy = MvxLocationAccuracy.Fine,
+                    TrackingMode = MvxLocationTrackingMode.Foreground,
+                }, _onLocation, _onError);
             }
         }
 
@@ -102,7 +93,6 @@ namespace GreenLight.Core.Services
 
         private void _onLocation(MvxGeoLocation location)
         {
-            _isEnabled = true;
             _isAvailable = true;
 
             if (LocationHelper.IsLocationTimestampRecent(location.Timestamp.LocalDateTime) == false)
@@ -142,12 +132,11 @@ namespace GreenLight.Core.Services
             switch (error.Code)
             {
                 case MvxLocationErrorCode.ServiceUnavailable:
-                    _isEnabled = false;
+                    _permissionGranted = true;
                     _isAvailable = false;
                     _watcher.Stop();
                     break;
                 case MvxLocationErrorCode.PermissionDenied:
-                    _isEnabled = false;
                     _isAvailable = false;
                     _permissionGranted = false;
                     _watcher.Stop();

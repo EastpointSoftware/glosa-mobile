@@ -67,6 +67,7 @@ namespace GreenLight.Core.Services
             _GLOSAWebService = GLOSAWebService;
             _navigationService = new NavigationService(messenger, watcher, locationService);
             _GLOSAWiFiService = GLOSAWiFiService;
+            _locationService = locationService;
         }
 
         #endregion
@@ -76,6 +77,11 @@ namespace GreenLight.Core.Services
         #endregion
 
         #region Implementation Public
+
+        public void Start()
+        {
+
+        }
 
         public void Start(List<kmlDocumentPlacemark> route, string intersectionId, ulong allowedVehicleManeuvers, int simulatedDirection, List<GPSLocation> simulatedGPSLocations, AdvisoryCalculatorMode advisoryCalculatorMode)
         {
@@ -159,90 +165,103 @@ namespace GreenLight.Core.Services
             {
                 var before = DateTime.Now;
 
-                if (CheckNetworkStatus() == true)
+                if (Settings.EnableIntersectionMode == false && CheckLocationServicesPermission() == false)
                 {
-                    Task.Run(() => SyncTime());
-
-                    if (_navigationService.IsNavigating == true && _navigationService.IsNavigatingToWaypoint == true && _navigationService.Waypoint != null)
-                    {
-                        // GET MAP SPAT data of intersection
-                        var nextWaypoint = _navigationService.LocateWaypointWithLineOfSight(WaypointDetectionMethod.GPSHistoryDirection, 1, 50);
-                        var nexyWaypointId = nextWaypoint != null ? nextWaypoint.intersections.IntersectionGeometry.id.id.ToString() : null;
-                        Task.Run(async () => await _GLOSAWebService.SyncMAPSPATAsync(_navigationService.WayPointId, nexyWaypointId));
-
-                        if (HasMapSPATDataFromCellular() == true || HasMapSPATDataFromWiFi() == true)
-                        {
-                            MapData map = null;
-                            SPAT spat = null;
-                            var dataConnection = DataConnection.Cellular;
-
-                            if (Settings.EnableWiFiMode == true && HasMapSPATDataFromWiFi() == true)
-                            {
-                                _isUsingWiFiSPATData = true;
-                                map = GetWiFIMAP();
-                                spat = GetWiFISPAT();
-                                dataConnection = DataConnection.WiFi_Beacon;
-                            }
-
-                            // revert to celluar data
-                            if (spat == null && HasMapSPATDataFromCellular() == true)
-                            {
-                                _isUsingWiFiSPATData = false;
-                                spat = _GLOSAWebService.SPATData(_navigationService.WayPointId);
-                                dataConnection = DataConnection.Cellular;
-                            }
-
-                            // revert to celluar data
-                            if (map == null && HasMapSPATDataFromCellular() == true)
-                            {
-                                map = _GLOSAWebService.MAPData(_navigationService.WayPointId);
-                            }
-
-                            var history = _navigationService.GPSHistory;
-
-                            DateTime date = CurrentTime();
-                            int currentTimeCROCS = GLOSAHelper.ConvertTimeToCROCSTime(date);
-
-                            GLOSAResult glosaResult = GLOSAHelper.TimeToTraficLight(map, spat, history, _navigationService.DeviceHeading, _allowedVehicleManeuvers, currentTimeCROCS);
-
-                            if (glosaResult.Errors == GLOSAErrors.NoErrors)
-                            {
-                                CalculationResult calculation = AdvisorySpeedCalculationResult.CalculateAdvisorySpeed(_navigationService.DistanceToWaypoint, glosaResult.TimeToTrafficLight, _navigationService.CurrentSpeed, _advisoryCalculatorMode);
-                                PostVehicleMessage(calculation, glosaResult);
-
-                                var after = DateTime.Now;
-                                double latency = (after - before).TotalMilliseconds;
-                                LogDataEvent(calculation, glosaResult, latency, currentTimeCROCS, dataConnection);
-                            }
-                            else
-                            {
-                                PostVehicleMessage(null, glosaResult);
-                                LogDataEvent("GLOSA Result", null, null, $"{map.intersections.IntersectionGeometry.id.id}", null, 0, Convert.ToInt16(_navigationService.DeviceHeading), glosaResult.Description);
-                                Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : GLOSA Error - {glosaResult.Errors}");
-                            }
-                        }
-                        else
-                        {
-                            PostVehicleMessage(null, null);
-                            LogDataEvent($"Waiting for data");
-                            Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Waiting for data {_navigationService.Waypoint.name}");
-                        }
-                    }
-                    else
-                    {
-                        PostVehicleMessage(null, null);
-                        Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Locating intersection");
-                        LogDataEvent("Locating intersection");
-                    }
+                    PostVehicleMessage(VehicleServiceStatus.GPSPermissionError);
+                    Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : GPS not enabled");
+                    LogDataEvent("GPS not enabled (Permissions)");
+                    return @continue;
                 }
-                else
+
+                if (Settings.EnableIntersectionMode == false && CheckLocationServices() == false)
+                {
+                    PostVehicleMessage(VehicleServiceStatus.GPSNotAvailable);
+                    Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Waiting for GPS");
+                    LogDataEvent("Waiting for GPS");
+                    return @continue;
+                }
+
+                if (CheckNetworkStatus() == false)
                 {
                     PostVehicleMessage(VehicleServiceStatus.NetworkConnectionError);
                     Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Waiting for connection (WiFi Mode: {Settings.EnableWiFiMode})");
                     LogDataEvent("No Network Connection");
+                    return @continue;
+                }
+
+                Task.Run(() => SyncTime());
+
+                if (_navigationService.IsNavigating == false || _navigationService.IsNavigatingToWaypoint == false || _navigationService.Waypoint == null)
+                {
+                    PostVehicleMessage(null, null);
+                    Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Locating intersection");
+                    LogDataEvent("Locating intersection");
+                    return @continue;
+                }
+
+                // GET MAP SPAT data of intersection
+                var nextWaypoint = _navigationService.LocateWaypointWithLineOfSight(WaypointDetectionMethod.GPSHistoryDirection, 1, 50);
+                var nexyWaypointId = nextWaypoint != null ? nextWaypoint.intersections.IntersectionGeometry.id.id.ToString() : null;
+                Task.Run(async () => await _GLOSAWebService.SyncMAPSPATAsync(_navigationService.WayPointId, nexyWaypointId));
+
+                if (HasMapSPATDataFromCellular() == false && HasMapSPATDataFromWiFi() == false)
+                {
+                    PostVehicleMessage(null, null);
+                    LogDataEvent($"Waiting for data");
+                    Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : Waiting for data {_navigationService.Waypoint.name}");
+                    return @continue;
+                }
+
+                MapData map = null;
+                SPAT spat = null;
+                var dataConnection = DataConnection.Cellular;
+
+                if (Settings.EnableWiFiMode == true && HasMapSPATDataFromWiFi() == true)
+                {
+                    _isUsingWiFiSPATData = true;
+                    map = GetWiFIMAP();
+                    spat = GetWiFISPAT();
+                    dataConnection = DataConnection.WiFi_Beacon;
+                }
+
+                // revert to celluar data
+                if (spat == null && HasMapSPATDataFromCellular() == true)
+                {
+                    _isUsingWiFiSPATData = false;
+                    spat = _GLOSAWebService.SPATData(_navigationService.WayPointId);
+                    dataConnection = DataConnection.Cellular;
+                }
+
+                // revert to celluar data
+                if (map == null && HasMapSPATDataFromCellular() == true)
+                {
+                    map = _GLOSAWebService.MAPData(_navigationService.WayPointId);
+                }
+
+                var history = _navigationService.GPSHistory;
+
+                DateTime date = CurrentTime();
+                int currentTimeCROCS = GLOSAHelper.ConvertTimeToCROCSTime(date);
+
+                GLOSAResult glosaResult = GLOSAHelper.TimeToTraficLight(map, spat, history, _navigationService.DeviceHeading, _allowedVehicleManeuvers, currentTimeCROCS);
+
+                if (glosaResult.Errors == GLOSAErrors.NoErrors)
+                {
+                    CalculationResult calculation = AdvisorySpeedCalculationResult.CalculateAdvisorySpeed(_navigationService.DistanceToWaypoint, glosaResult.TimeToTrafficLight, _navigationService.CurrentSpeed, _advisoryCalculatorMode);
+                    PostVehicleMessage(calculation, glosaResult);
+
+                    var after = DateTime.Now;
+                    double latency = (after - before).TotalMilliseconds;
+                    LogDataEvent(calculation, glosaResult, latency, currentTimeCROCS, dataConnection);
+                }
+                else
+                {
+                    PostVehicleMessage(null, glosaResult);
+                    LogDataEvent("GLOSA Result", null, null, $"{map.intersections.IntersectionGeometry.id.id}", null, 0, Convert.ToInt16(_navigationService.DeviceHeading), glosaResult.Description);
+                    Debug.WriteLine($"Vehicle Service Timer {DateTime.Now} : GLOSA Error - {glosaResult.Errors}");
                 }
             }
-
+            
             return @continue;
         }
 
@@ -321,6 +340,26 @@ namespace GreenLight.Core.Services
             }
         }
 
+        private bool CheckLocationServices()
+        {
+            if (_locationService.IsAvaliable == false)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool CheckLocationServicesPermission()
+        {
+            if (_locationService.PermissionGranted == false)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private bool CheckNetworkStatus()
         {
             var hasNetwork = false;
@@ -378,7 +417,6 @@ namespace GreenLight.Core.Services
             bool hasMAPDataFromCelluar = _GLOSAWebService.HasMAPDataSyncedForIntersection(_navigationService.WayPointId);
             bool hasSPATDataFromCelluar = _GLOSAWebService.HasMAPSPATDataSyncedForIntersection(_navigationService.WayPointId);
 
-
             hasData = hasMAPDataFromCelluar == true && hasSPATDataFromCelluar == true;
 
             return hasData;
@@ -412,8 +450,6 @@ namespace GreenLight.Core.Services
                 {
                     if (Settings.EnableIntersectionMode == true)
                     {
-                        //data = XMLHelper.LoadSPATDataForIntersection(Settings.IntersectionId);
-
                         string s = _socketService.GetData();
 
                         XmlSerializer serializer = new XmlSerializer(typeof(SPAT));
@@ -538,6 +574,7 @@ namespace GreenLight.Core.Services
         private INetworkService _networkService;
         private INavigationService _navigationService;
         private IGLOSAWiFiService _GLOSAWiFiService;
+        private ILocationService _locationService;
 
         private ISocketService _socketService;
         private bool _isUsingWiFiSPATData = false;
